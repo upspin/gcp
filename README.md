@@ -1,4 +1,4 @@
-# Upspin `aws` repository
+# Upspin `gcp` repository
 
 TODO: Short description of what this repository is about.
 
