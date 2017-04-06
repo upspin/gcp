@@ -16,6 +16,23 @@
       "revId": "4ea94524a225496568e6b3723c8203954b43c836",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff6f1900_902c41f7",
+        "filename": "cmd/keyserver-gcp/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T06:40:29Z",
+      "side": 1,
+      "message": "these two need to go in this repo",
+      "revId": "4ea94524a225496568e6b3723c8203954b43c836",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
     }
   ]
 }
