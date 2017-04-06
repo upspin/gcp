@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b917d9e8_c52ac745",
+        "filename": "cmd/keyserver-gcp/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T06:39:43Z",
+      "side": 1,
+      "message": "keyserver-gcp",
+      "revId": "4ea94524a225496568e6b3723c8203954b43c836",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
