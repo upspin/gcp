@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c65e1fef_b6701b1a",
+        "filename": "cmd/keyserver-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "delete this and update the comment",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1703ee_2837c7fe",
+        "filename": "cmd/storeserver-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "delete this and update the comment",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35947e8f_ed5302f7",
+        "filename": "cmd/upspin-setupstorage-gcp/setupstorage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "upspin-setupstorage-gcp command",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30117763_0039bb3a",
+        "filename": "cmd/upspin-setupstorage-gcp/setupstorage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "Setupstorage-gcp ?\nhere and elsewhere",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f663a43_7c84008a",
+        "filename": "cmd/upspin-setupstorage-gcp/setupstorage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "-gcp ? not sure",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c51f1f4_d81abedf",
+        "filename": "cmd/upspinserver-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-06T05:44:30Z",
+      "side": 1,
+      "message": "delete and update the comment",
+      "revId": "ba0b3558175deec30f2fb0d9943341a456a07a8c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
