@@ -15,6 +15,7 @@ import (
 	"upspin.io/serverutil/dirserver"
 
 	"gcp.upspin.io/cloud/gcpmetric"
+	"gcp.upspin.io/cloud/https"
 
 	// TODO: Which of these are actually needed?
 
@@ -46,5 +47,6 @@ func main() {
 		}
 	}
 
-	dirserver.Main()
+	ready := dirserver.Main()
+	https.ListenAndServe(ready, serverName)
 }

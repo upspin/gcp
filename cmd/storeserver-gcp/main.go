@@ -14,6 +14,7 @@ import (
 	"upspin.io/serverutil/storeserver"
 
 	"gcp.upspin.io/cloud/gcpmetric"
+	"gcp.upspin.io/cloud/https"
 
 	// Storage on GCS.
 	_ "gcp.upspin.io/cloud/storage/gcs"
@@ -38,5 +39,6 @@ func main() {
 		}
 	}
 
-	storeserver.Main()
+	ready := storeserver.Main()
+	https.ListenAndServe(ready, serverName)
 }
