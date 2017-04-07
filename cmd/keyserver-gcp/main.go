@@ -19,6 +19,7 @@ import (
 	"upspin.io/upspin"
 
 	"gcp.upspin.io/cloud/gcpmetric"
+	"gcp.upspin.io/cloud/https"
 
 	// Load required transports
 	_ "upspin.io/key/transports"
@@ -61,6 +62,7 @@ func main() {
 	}
 
 	keyserver.Main(setupTestUser)
+	https.ListenAndServe(nil, serverName)
 }
 
 // isLocal returns true if the name only resolves to loopback addresses.
