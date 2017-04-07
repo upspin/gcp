@@ -9,6 +9,8 @@
 package main // import "gcp.upspin.io/cmd/upspinserver-gcp"
 
 import (
+	"gcp.upspin.io/cloud/https"
+
 	"upspin.io/serverutil/upspinserver"
 
 	// Storage on GCS.
@@ -16,5 +18,6 @@ import (
 )
 
 func main() {
-	upspinserver.Main()
+	ready := upspinserver.Main()
+	https.ListenAndServe(ready, "upspinserver")
 }
