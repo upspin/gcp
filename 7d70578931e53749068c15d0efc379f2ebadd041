@@ -16,6 +16,24 @@
       "revId": "7d70578931e53749068c15d0efc379f2ebadd041",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45c9ede_80d3588a",
+        "filename": "cloud/autocert/autocert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T02:49:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb463e9e_d7bb542b",
+      "revId": "7d70578931e53749068c15d0efc379f2ebadd041",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
