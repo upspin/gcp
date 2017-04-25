@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5767f57a_e15becf3",
+        "filename": "cloud/docker/cloudbuild/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-04-25T03:45:54Z",
+      "side": 1,
+      "message": "s/damn //",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbaa7941_17c153ec",
+        "filename": "cmd/upspin-deploy-gcp/cdbuild.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-04-25T03:45:54Z",
+      "side": 1,
+      "message": "import comment?",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d63a87_b16bf656",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-04-25T03:45:54Z",
+      "side": 1,
+      "message": "upspin-deploy-gcp",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a202b6b6_ae3e696f",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-04-25T03:45:54Z",
+      "side": 1,
+      "message": "-gcp",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
