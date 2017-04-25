@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fedd4148_47f6b50e",
+        "filename": "cloud/docker/cloudbuild/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T03:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5767f57a_e15becf3",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbaa7941_17c153ec",
         "filename": "cmd/upspin-deploy-gcp/cdbuild.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-25T03:45:54Z",
       "side": 1,
       "message": "import comment?",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08c9d915_fb872a15",
+        "filename": "cmd/upspin-deploy-gcp/cdbuild.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T03:53:20Z",
+      "side": 1,
+      "message": "it\u0027s in the other file. policy is to only include it in one file per package",
+      "parentUuid": "fbaa7941_17c153ec",
       "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9f19724b_259c3229",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T03:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d63a87_b16bf656",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a202b6b6_ae3e696f",
         "filename": "cmd/upspin-deploy-gcp/main.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b708795d_2615393f",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T03:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a202b6b6_ae3e696f",
+      "revId": "3cccf61fc63b8309527802b2731594e196f4032a",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
