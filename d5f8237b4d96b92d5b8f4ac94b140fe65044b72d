@@ -22,6 +22,30 @@
       "revId": "d5f8237b4d96b92d5b8f4ac94b140fe65044b72d",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68250090_3ec8c451",
+        "filename": "cloud/https/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-04-25T05:34:12Z",
+      "side": 1,
+      "message": "I don\u0027t think that it does nullify it.\nEric\u0027s fix is this one, right?\n\nIn cloud/https.ListenAndServe:\n\n        letscache :\u003d opt.LetsEncryptCache\n        if letscache \u003d\u003d \"\" {\n                dir :\u003d filepath.Join(config.Home(), \"upspin\", \"letsencrypt\")\n                info, err :\u003d os.Stat(dir)\n                if err \u003d\u003d nil \u0026\u0026 info.IsDir() \u0026\u0026 (info.Mode().Perm() \u003d\u003d 0700) {\n                        letscache \u003d dir\n                }\n        }\n\nAnd then the if/else statements that set up the TLS config:\n\n        if opt.InsecureHTTP {\n                ...\n        } else if letscache !\u003d \"\" {\n                ...\n        } else if cache :\u003d opt.AutocertCache; cache !\u003d nil {\n                ...\n\nSo even if the code in this file sets AutocertCache, Eric\u0027s auto-detection of the existing let\u0027s encrypt bucket should take precedence. Does that sound correct to you?",
+      "parentUuid": "8224ddc9_5f87757b",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "d5f8237b4d96b92d5b8f4ac94b140fe65044b72d",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
     }
   ]
 }
