@@ -94,6 +94,30 @@
       "revId": "d5f8237b4d96b92d5b8f4ac94b140fe65044b72d",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e8f88d_e5de0ae0",
+        "filename": "cloud/https/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5309
+      },
+      "writtenOn": "2017-04-25T06:30:54Z",
+      "side": 1,
+      "message": "Too many ways to specify the same thing.  How about, ignore the flag here and if OnGCE and the metadata is set use it. Otherwise, just call the old code.",
+      "parentUuid": "4aa02a05_5a0fd2bc",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "d5f8237b4d96b92d5b8f4ac94b140fe65044b72d",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
     }
   ]
 }
