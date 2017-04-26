@@ -8,7 +8,7 @@
 package main // import "gcp.upspin.io/cmd/dirserver-gcp"
 
 import (
-	cloudLog "upspin.io/cloud/log"
+	cloudLog "gcp.upspin.io/cloud/log"
 	"upspin.io/flags"
 	"upspin.io/log"
 	"upspin.io/metric"

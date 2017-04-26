@@ -7,7 +7,7 @@
 package main // import "gcp.upspin.io/cmd/storeserver-gcp"
 
 import (
-	cloudLog "upspin.io/cloud/log"
+	cloudLog "gcp.upspin.io/cloud/log"
 	"upspin.io/flags"
 	"upspin.io/log"
 	"upspin.io/metric"
