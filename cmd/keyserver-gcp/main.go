@@ -10,7 +10,7 @@ import (
 	"flag"
 	"net"
 
-	cloudLog "upspin.io/cloud/log"
+	cloudLog "gcp.upspin.io/cloud/log"
 	"upspin.io/factotum"
 	"upspin.io/flags"
 	"upspin.io/log"
