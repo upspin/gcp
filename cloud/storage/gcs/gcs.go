@@ -8,6 +8,7 @@ package gcs // import "gcp.upspin.io/cloud/storage/gcs"
 import (
 	"bytes"
 	"encoding/base64"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -159,7 +160,32 @@ func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 
 // Delete implements Storage.
 func (gcs *gcsImpl) Delete(ref string) error {
+	if ref[:11] == "garbageList" { // Ugly hack to create list of objects.
+		return gcs.garbageList("0000" + ref)
+	}
 	return gcs.service.Objects.Delete(gcs.bucketName, ref).Do()
+}
+
+// garbageList creates a listing of all objects in this bucket.
+// TODO(adg,edpin) Remove when you rewrite garbage collection.
+func (gcs *gcsImpl) garbageList(ref string) error {
+	var buf bytes.Buffer
+	pageToken := ""
+	for {
+		objs, err := gcs.service.Objects.List(gcs.bucketName).Fields("items(name),nextPageToken").PageToken(pageToken).Do()
+		if err != nil {
+			return err
+		}
+		for _, o := range objs.Items {
+			fmt.Fprintf(&buf, "%s\n", o.Name)
+		}
+		if objs.NextPageToken == "" {
+			break
+		}
+		pageToken = objs.NextPageToken
+	}
+	err := gcs.Put(ref, buf.Bytes())
+	return err
 }
 
 // emptyBucket completely removes all files in a bucket permanently.
