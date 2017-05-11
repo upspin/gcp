@@ -7,8 +7,9 @@
 package main // import "gcp.upspin.io/cmd/storeserver-gcp"
 
 import (
+	"flag"
+
 	cloudLog "gcp.upspin.io/cloud/log"
-	"upspin.io/flags"
 	"upspin.io/log"
 	"upspin.io/metric"
 	"upspin.io/serverutil/storeserver"
@@ -27,18 +28,19 @@ const (
 )
 
 func main() {
-	flags.Register("project")
+	project := flag.String("project", "", "GCP `project` name")
 
-	if flags.Project != "" {
-		cloudLog.Connect(flags.Project, serverName)
-		svr, err := gcpmetric.NewSaver(flags.Project, samplingRatio, maxQPS, "serverName", serverName)
+	ready := storeserver.Main()
+
+	if *project != "" {
+		cloudLog.Connect(*project, serverName)
+		svr, err := gcpmetric.NewSaver(*project, samplingRatio, maxQPS, "serverName", serverName)
 		if err != nil {
-			log.Fatalf("Can't start a metric saver for GCP project %q: %s", flags.Project, err)
+			log.Fatalf("Can't start a metric saver for GCP project %q: %s", *project, err)
 		} else {
 			metric.RegisterSaver(svr)
 		}
 	}
 
-	ready := storeserver.Main()
 	https.ListenAndServe(ready, serverName)
 }

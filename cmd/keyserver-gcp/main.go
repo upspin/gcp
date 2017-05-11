@@ -47,21 +47,22 @@ var (
 )
 
 func main() {
-	flags.Register("project")
+	project := flag.String("project", "", "GCP `project` name")
 
-	if flags.Project != "" {
-		cloudLog.Connect(flags.Project, serverName)
+	keyserver.Main(setupTestUser)
+
+	if *project != "" {
+		cloudLog.Connect(*project, serverName)
 		// Disable logging locally so we don't pay the price of local
 		// unbuffered writes on a busy server.
 		log.SetOutput(nil)
-		svr, err := gcpmetric.NewSaver(flags.Project, metricSampleSize, metricMaxQPS, "serverName", serverName)
+		svr, err := gcpmetric.NewSaver(*project, metricSampleSize, metricMaxQPS, "serverName", serverName)
 		if err != nil {
-			log.Fatalf("Can't start a metric saver for GCP project %q: %s", flags.Project, err)
+			log.Fatalf("Can't start a metric saver for GCP project %q: %s", *project, err)
 		}
 		metric.RegisterSaver(svr)
 	}
 
-	keyserver.Main(setupTestUser)
 	https.ListenAndServe(nil, serverName)
 }
 
