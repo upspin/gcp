@@ -20,7 +20,6 @@ import (
 	iam "google.golang.org/api/iam/v1"
 	storage "google.golang.org/api/storage/v1"
 
-	"upspin.io/flags"
 	"upspin.io/subcmd"
 )
 
@@ -68,15 +67,14 @@ func main() {
 
 	where := flag.String("where", filepath.Join(os.Getenv("HOME"), "upspin", "deploy"), "`directory` to store private configuration files")
 	domain := flag.String("domain", "", "domain `name` for this Upspin installation")
-
-	flags.Register("project")
+	project := flag.String("project", "", "GCP `project` name")
 
 	s.ParseFlags(flag.CommandLine, os.Args[1:], help,
-		"-project=<gcp_project_name> setupstorage-gcp -domain=<name> <bucket_name>")
+		"setupstorage-gcp -domain=<name> -project=<gcp_project_name> <bucket_name>")
 	if flag.NArg() != 1 {
 		s.Exitf("a single bucket name must be provided")
 	}
-	if *domain == "" || flags.Project == "" {
+	if *domain == "" || *project == "" {
 		s.Exitf("the -domain and -project flags must be provided")
 	}
 
@@ -85,9 +83,9 @@ func main() {
 	cfgPath := filepath.Join(*where, *domain)
 	cfg := s.ReadServerConfig(cfgPath)
 
-	email, privateKeyData := s.createServiceAccount(cfgPath)
+	email, privateKeyData := s.createServiceAccount(*project, cfgPath)
 
-	s.createBucket(email, bucket)
+	s.createBucket(*project, email, bucket)
 
 	cfg.StoreConfig = []string{
 		"backend=GCS",
@@ -102,7 +100,7 @@ func main() {
 	s.ExitNow()
 }
 
-func (s *state) createServiceAccount(cfgPath string) (email, privateKeyData string) {
+func (s *state) createServiceAccount(project, cfgPath string) (email, privateKeyData string) {
 	client, err := google.DefaultClient(context.Background(), iam.CloudPlatformScope)
 	if err != nil {
 		// TODO: ask the user to run 'gcloud auth application-default login'
@@ -113,7 +111,7 @@ func (s *state) createServiceAccount(cfgPath string) (email, privateKeyData stri
 		s.Exit(err)
 	}
 
-	name := "projects/" + flags.Project
+	name := "projects/" + project
 	req := &iam.CreateServiceAccountRequest{
 		AccountId: "upspinstorage", // TODO(adg): flag?
 		ServiceAccount: &iam.ServiceAccount{
@@ -125,7 +123,7 @@ func (s *state) createServiceAccount(cfgPath string) (email, privateKeyData stri
 	if isExists(err) {
 		// This should be the name we need to get.
 		// TODO(adg): make this more robust by listing instead.
-		guess := name + "/serviceAccounts/upspinstorage@" + flags.Project + ".iam.gserviceaccount.com"
+		guess := name + "/serviceAccounts/upspinstorage@" + project + ".iam.gserviceaccount.com"
 		acct, err = svc.Projects.ServiceAccounts.Get(guess).Do()
 		if err != nil {
 			s.Exit(err)
@@ -150,7 +148,7 @@ func (s *state) createServiceAccount(cfgPath string) (email, privateKeyData stri
 	return acct.Email, key.PrivateKeyData
 }
 
-func (s *state) createBucket(email, bucket string) {
+func (s *state) createBucket(project, email, bucket string) {
 	client, err := google.DefaultClient(context.Background(), storage.DevstorageFullControlScope)
 	if err != nil {
 		// TODO: ask the user to run 'gcloud auth application-default login'
@@ -161,7 +159,7 @@ func (s *state) createBucket(email, bucket string) {
 		s.Exit(err)
 	}
 
-	_, err = svc.Buckets.Insert(flags.Project, &storage.Bucket{
+	_, err = svc.Buckets.Insert(project, &storage.Bucket{
 		Acl: []*storage.BucketAccessControl{{
 			Bucket: bucket,
 			Entity: "user-" + email,
