@@ -83,7 +83,7 @@ func main() {
 	cfgPath := filepath.Join(*where, *domain)
 	cfg := s.ReadServerConfig(cfgPath)
 
-	email, privateKeyData := s.createServiceAccount(*project, cfgPath)
+	email, privateKeyData := s.createServiceAccount(*project)
 
 	s.createBucket(*project, email, bucket)
 
@@ -100,7 +100,7 @@ func main() {
 	s.ExitNow()
 }
 
-func (s *state) createServiceAccount(project, cfgPath string) (email, privateKeyData string) {
+func (s *state) createServiceAccount(project string) (email, privateKeyData string) {
 	client, err := google.DefaultClient(context.Background(), iam.CloudPlatformScope)
 	if err != nil {
 		// TODO: ask the user to run 'gcloud auth application-default login'
