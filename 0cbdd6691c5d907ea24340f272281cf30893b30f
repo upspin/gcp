@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3242537f_672893e8",
+        "filename": "cloud/storage/gcs/gcs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-05-17T22:03:07Z",
+      "side": 1,
+      "message": "if strings.HasPrefix(ref, \"garbageList\")\n\nto avoid a panic",
+      "revId": "0cbdd6691c5d907ea24340f272281cf30893b30f",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
