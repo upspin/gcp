@@ -16,6 +16,24 @@
       "revId": "db05fdf3e0c6212c89c5561f8778a0a0fa90ea77",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b0ce26_f6c3762d",
+        "filename": "cmd/dirserver-gcp/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-05-19T02:25:24Z",
+      "side": 1,
+      "message": "You\u0027re quite right. I found a better way of doing this that also benefits these services.",
+      "parentUuid": "acf2fabb_260313c4",
+      "revId": "db05fdf3e0c6212c89c5561f8778a0a0fa90ea77",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
     }
   ]
 }
