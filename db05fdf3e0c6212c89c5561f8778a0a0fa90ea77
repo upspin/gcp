@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acf2fabb_260313c4",
+        "filename": "cmd/dirserver-gcp/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2017-05-19T01:59:35Z",
+      "side": 1,
+      "message": "I don\u0027t understand the overall structure enough yet to appreciate why we want to set the Hosts option for other servers but not this one.  But I trust that you do and I\u0027ll give a +2 anyway.   Clearly this CL is an improvement;  thank you!",
+      "revId": "db05fdf3e0c6212c89c5561f8778a0a0fa90ea77",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
