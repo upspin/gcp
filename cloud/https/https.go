@@ -16,7 +16,8 @@ import (
 )
 
 // ListenAndServe serves the http.DefaultServeMux by HTTPS (and HTTP,
-// redirecting to HTTPS), configured using the server command line flags.
+// redirecting to HTTPS), configured using the given options (or the
+// command-line flags if opt is nil).
 //
 // If running on GCE and the -letscache flag is *not* specified, ListenAndServe
 // will configure a Let's Encrypt cache that stores its data in the Cloud
@@ -28,8 +29,10 @@ import (
 //
 // ListenAndServe does not return. It exits the program when the server is shut
 // down (via SIGTERM or due to an error) and calls shutdown.Shutdown.
-func ListenAndServe(ready chan<- struct{}, serverName string) {
-	opt := https.OptionsFromFlags()
+func ListenAndServe(ready chan<- struct{}, opt *https.Options, serverName string) {
+	if opt == nil {
+		opt = https.OptionsFromFlags()
+	}
 	if metadata.OnGCE() && opt.LetsEncryptCache == "" {
 		const key = "letsencrypt-bucket"
 		bucket, err := metadata.InstanceAttributeValue(key)

@@ -63,7 +63,7 @@ func main() {
 		metric.RegisterSaver(svr)
 	}
 
-	https.ListenAndServe(nil, serverName)
+	https.ListenAndServe(nil, nil, serverName)
 }
 
 // isLocal returns true if the name only resolves to loopback addresses.

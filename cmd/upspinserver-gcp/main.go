@@ -9,8 +9,9 @@
 package main // import "gcp.upspin.io/cmd/upspinserver-gcp"
 
 import (
-	"gcp.upspin.io/cloud/https"
+	gcpHTTPS "gcp.upspin.io/cloud/https"
 
+	"upspin.io/cloud/https"
 	"upspin.io/serverutil/upspinserver"
 
 	// Storage on GCS.
@@ -18,6 +19,8 @@ import (
 )
 
 func main() {
-	ready := upspinserver.Main()
-	https.ListenAndServe(ready, "upspinserver")
+	server, ready := upspinserver.Main()
+	opt := https.OptionsFromFlags()
+	opt.LetsEncryptHosts = []string{string(server.Addr)}
+	gcpHTTPS.ListenAndServe(ready, opt, "upspinserver")
 }
