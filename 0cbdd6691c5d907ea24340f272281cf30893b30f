@@ -16,6 +16,24 @@
       "revId": "0cbdd6691c5d907ea24340f272281cf30893b30f",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed777d5_4e71cce2",
+        "filename": "cloud/storage/gcs/gcs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2017-05-22T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3242537f_672893e8",
+      "revId": "0cbdd6691c5d907ea24340f272281cf30893b30f",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
