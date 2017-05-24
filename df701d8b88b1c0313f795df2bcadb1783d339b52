@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cc4ee4f_0ff48c70",
+        "filename": "cloud/storage/gcs/gcs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-05-24T01:33:56Z",
+      "side": 1,
+      "message": "Why the prefix \"0000\" ?",
+      "revId": "df701d8b88b1c0313f795df2bcadb1783d339b52",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f299639_9cfa0c6e",
+        "filename": "cloud/storage/gcs/gcs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-05-24T01:33:56Z",
+      "side": 1,
+      "message": "replace this with a colon",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "df701d8b88b1c0313f795df2bcadb1783d339b52",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
