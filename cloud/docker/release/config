@@ -1,0 +1,5 @@
+username: release@upspin.io
+secrets: /secrets
+storeserver: remote,store.upspin.io:443
+dirserver: remote,dir.upspin.io:443
+packing: ee
