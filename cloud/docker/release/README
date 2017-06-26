@@ -1,0 +1,50 @@
+This directory contains the scripts for creating a Google Container Builder
+build step and trigger for rolling Upspin binary releases.
+
+How it works
+
+1. Gerrit pushes a commit to the gituhb.com/upspin/upspin repository.
+2. Google's infrastructure automatically pulls that commit into a private Git
+   repo inside the upspin-test Google Cloud Project.
+3. Step 2 triggers a Google Container Builder build, which launches a Docker
+   image to build the release.
+4. The Docker image:
+   a. Fetches dependencies,
+   b. Builds the upspin, upspinfs, and cacheserver binaries,
+   c. Writes the resulting binaries to the release@upspin.io Upspin tree,
+   d. Updates the links inside release@upspin.io/latest.
+
+Setting it up
+
+This document assumes you have permissions to work with the 'upspin-test'
+Google Cloud project.
+
+First, log in with gcloud:
+	$ gcloud auth login
+
+Create a Source Repository named 'upspin' and configure it to mirror
+the contents of the github.com/upspin/upspin repo.
+	https://cloud.google.com/code/develop/repo
+
+Generate the keys for release@upspin.io from the secret seed and put them in
+the 'gcp.upspin.io/cloud/docker/release/secrets' directory (talk to your fellow
+Upspin team member for the secret):
+	$ mkdir secrets
+	$ upspin keygen -where=./secrets -secretseed $SEED
+
+Create the 'release' build step using upspin-deploy-gcp:
+	$ go get gcp.upspin.io/cmd/upspin-deploy-gcp
+	$ upspin-deploy-gcp -release-image
+
+Delete the secrets directory, to prevent unfortunate leakages:
+	$ rm -r secrets
+
+Create a trigger that runs the 'release' build step
+on each new commit to the 'upspin' repo:
+	$ ./createtriggers.sh
+
+To test that everything is working, trigger the build manually:
+	https://cloud.google.com/gcr/triggers
+Once complete, fresh binaries should be visible in the release@upspin.io tree.
+If the build fails, look at the log output of the build for clues:
+	https://cloud.google.com/gcr/builds
