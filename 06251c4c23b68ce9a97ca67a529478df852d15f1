@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1e1c7ad_dacc677b",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-26T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c9c8f2_6f9db11a",
+      "revId": "06251c4c23b68ce9a97ca67a529478df852d15f1",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a5c6874_5435b641",
         "filename": "cloud/docker/release/README",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-26T17:43:18Z",
       "side": 1,
       "message": "Should this be leaked? (Too late now). cloud.google.com works internally and redirects.",
+      "revId": "06251c4c23b68ce9a97ca67a529478df852d15f1",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ac22b3_9dc94035",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-26T23:14:39Z",
+      "side": 1,
+      "message": "For neither the first nor last time.\n\nhttps://www.google.com.au/search?q\u003dpantheon.corp.google.com\u0026oq\u003dpantheon.corp.google.com\u0026aqs\u003dchrome..69i60l3j69i57j69i60.3390j0j7\u0026sourceid\u003dchrome\u0026ie\u003dUTF-8",
+      "parentUuid": "6a5c6874_5435b641",
       "revId": "06251c4c23b68ce9a97ca67a529478df852d15f1",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "06251c4c23b68ce9a97ca67a529478df852d15f1",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2400c67_801163b5",
+        "filename": "cmd/upspin-deploy-gcp/upspin",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-26T23:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962fcb5b_7b549619",
+      "revId": "06251c4c23b68ce9a97ca67a529478df852d15f1",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
