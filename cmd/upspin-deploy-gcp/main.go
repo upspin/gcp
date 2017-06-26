@@ -75,6 +75,8 @@ var (
 	delete = flag.String("delete", "", "Delete cloud services (string must equal the `project` name, for safety)")
 
 	all = flag.Bool("all", false, "Create/deploy/delete all servers")
+
+	releaseImage = flag.Bool("release-image", false, "Build release Docker image and exit")
 )
 
 func main() {
@@ -91,6 +93,15 @@ func main() {
 	flag.Parse()
 
 	mustProvideFlag(project, "-project")
+	if *releaseImage {
+		err := cdbuild(repoPath("cloud/docker/release"), *project, "release", "")
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
+		return
+	}
+
 	mustProvideFlag(zone, "-zone")
 
 	// Region is determined from the given zone.
