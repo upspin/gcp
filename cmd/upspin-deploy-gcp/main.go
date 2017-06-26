@@ -454,6 +454,12 @@ func (c *Config) buildServer(server string) error {
 			"secrets: /upspin",
 			"keyserver: "+c.endpoint("keyserver"), // So that it knows who it is.
 		)
+	case "frontend":
+		err = writeConfig(dir,
+			"username: "+c.frontendUserName(),
+			"secrets: /upspin",
+			"keyserver: "+c.endpoint("keyserver"),
+		)
 	}
 	if err != nil {
 		return err
@@ -473,6 +479,11 @@ func (c *Config) buildServer(server string) error {
 			"secret.upspinkey",
 		}
 	case "storeserver":
+		files = []string{
+			"public.upspinkey",
+			"secret.upspinkey",
+		}
+	case "frontend":
 		files = []string{
 			"public.upspinkey",
 			"secret.upspinkey",
@@ -573,6 +584,14 @@ func (c *Config) keyServerUserName() string {
 		return "upspin-key@upspin.io"
 	}
 	return "upspin-key@" + c.Domain
+}
+
+func (c *Config) frontendUserName() string {
+	if c.inProd() {
+		// HACK: see the comment on inProd.
+		return "upspin-frontend@upspin.io"
+	}
+	return "upspin-frontend@" + c.Domain
 }
 
 func writeConfig(dir string, lines ...string) error {
