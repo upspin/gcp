@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6552675d_9d6bafb9",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-27T02:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4303b92_0a2786a3",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bf2d440_a36d1403",
         "filename": "cloud/docker/release/README",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1a0b6b14_70340a0f",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-27T02:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf2d440_a36d1403",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb01e641_3ef56d8e",
         "filename": "cloud/docker/release/makerelease.sh",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2017-06-27T01:13:06Z",
       "side": 1,
       "message": "i\u0027d like the diagnostics to go to fd 2.",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68289c2e_f4bd6ab2",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-27T02:32:36Z",
+      "side": 1,
+      "message": "This all runs inside docker which, in most cases, collects stdin and stderr together. I\u0027d prefer to leave it as is, if you don\u0027t strenuously object.",
+      "parentUuid": "eb01e641_3ef56d8e",
       "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "e24f0d22_f10467a4",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-27T02:32:36Z",
+      "side": 1,
+      "message": "Done here.",
+      "parentUuid": "a3c1848d_9924fe5f",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4fdb420_2954eca8",
         "filename": "cmd/upspin-deploy-gcp/main.go",
         "patchSetId": 3
@@ -84,6 +156,24 @@
       "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e697312a_dc231574",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-27T02:32:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4fdb420_2954eca8",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
