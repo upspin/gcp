@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4303b92_0a2786a3",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T01:13:06Z",
+      "side": 1,
+      "message": "github",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf2d440_a36d1403",
+        "filename": "cloud/docker/release/README",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T01:13:06Z",
+      "side": 1,
+      "message": "s/unfortunate //",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb01e641_3ef56d8e",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T01:13:06Z",
+      "side": 1,
+      "message": "i\u0027d like the diagnostics to go to fd 2.",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c1848d_9924fe5f",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T01:13:06Z",
+      "side": 1,
+      "message": "especially here and on line 29.\necho 1\u003e\u00262 XXX",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fdb420_2954eca8",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T01:13:06Z",
+      "side": 1,
+      "message": "might be nice if the flag included \"docker\", but this is OK",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
