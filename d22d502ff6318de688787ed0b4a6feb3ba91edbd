@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "bac0f77e_30604433",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-27T03:28:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68289c2e_f4bd6ab2",
+      "revId": "d22d502ff6318de688787ed0b4a6feb3ba91edbd",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3c1848d_9924fe5f",
         "filename": "cloud/docker/release/makerelease.sh",
         "patchSetId": 3
