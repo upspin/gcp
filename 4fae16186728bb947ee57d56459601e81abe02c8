@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58211f3c_e40a91e3",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-28T04:24:48Z",
+      "side": 1,
+      "message": "i would use a function instead of a macro for this and call it upspin\n\nfunction upspin() {\n  /gopath/bin/upspin -config\u003d/config \"$@\"\n}",
+      "revId": "4fae16186728bb947ee57d56459601e81abe02c8",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f1d7f8_a3c5d6c3",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-28T04:24:48Z",
+      "side": 1,
+      "message": "where did COMMIT_SHA get set?",
+      "revId": "4fae16186728bb947ee57d56459601e81abe02c8",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a5133d_fab053f8",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-28T04:24:48Z",
+      "side": 1,
+      "message": "it really bugs me that you\u0027re printing this to stdout but it\u0027s clear that battle is lost",
+      "revId": "4fae16186728bb947ee57d56459601e81abe02c8",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbe5324_20b41853",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-06-28T04:24:48Z",
+      "side": 1,
+      "message": "here you do it. i don\u0027t understand.",
+      "revId": "4fae16186728bb947ee57d56459601e81abe02c8",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
