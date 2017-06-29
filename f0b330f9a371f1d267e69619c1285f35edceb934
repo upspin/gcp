@@ -16,6 +16,24 @@
       "revId": "f0b330f9a371f1d267e69619c1285f35edceb934",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c958e77_f5449a2b",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-06-29T00:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3861681_d28646ba",
+      "revId": "f0b330f9a371f1d267e69619c1285f35edceb934",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": false
     }
   ]
 }
