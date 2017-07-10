@@ -141,11 +141,11 @@ func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
 // Put implements Storage.
 func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 	const op = "cloud/storage/gcs.Put"
-	buf := bytes.NewBuffer(contents)
-	acl := string(gcs.defaultWriteACL)
-	object := &gcsBE.Object{Name: ref}
 	for tries := 0; ; tries++ {
-		_, err := gcs.service.Objects.Insert(gcs.bucketName, object).Media(buf).PredefinedAcl(acl).Do()
+		_, err := gcs.service.Objects.Insert(gcs.bucketName, &gcsBE.Object{Name: ref}).
+			Media(bytes.NewReader(contents)).
+			PredefinedAcl(gcs.defaultWriteACL).
+			Do()
 		if err == nil {
 			return nil
 		}
