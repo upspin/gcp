@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "072a1de6_8927fbd3",
+        "filename": "cloud/storage/gcs/gcs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5308
+      },
+      "writtenOn": "2017-07-10T23:53:18Z",
+      "side": 1,
+      "message": "Do you need this inside the loop?",
+      "revId": "95a934fbd148b39347308649b4763a645a7945e6",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
