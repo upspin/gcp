@@ -32,7 +32,7 @@ for GOOS in $oses; do
 				continue
 			fi
 			echo 1>&2 "Building $cmd for ${GOOS}_${GOARCH}"
-			/usr/local/go/bin/go get -v upspin.io/cmd/$cmd
+			/usr/local/go/bin/go install -v upspin.io/cmd/$cmd
 		done
 	done
 done
