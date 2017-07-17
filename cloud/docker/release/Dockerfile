@@ -1,5 +1,4 @@
-FROM golang:1.8
-ENV GOPATH /gopath
+FROM karalabe/xgo-latest
 ADD makerelease.sh /makerelease.sh
 ADD config /config
 ADD secrets /secrets

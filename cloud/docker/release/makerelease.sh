@@ -5,6 +5,10 @@
 # The Docker container provides the Upspin repo in the /workspace directory and
 # sets the environment COMMIT_HASH variable to the current Git commit hash of
 # that repo.
+# The Docker container is built atop xgo (https://github.com/karalabe/xgo)
+# which is a framework for cross-compiling cgo-enabled binaries. Its magic
+# environment variables are EXT_GOPATH, the location of the Go workspace, and
+# TARGETS, a space-separated list of os/arch combinations.
 
 # The commands to build and distribute.
 # Command "upspin" must be one of these,
@@ -19,46 +23,49 @@ arches="amd64"
 user="release@upspin.io"
 
 echo 1>&2 "Repo has base path $1"
-mkdir -p /gopath/src
-cp -R /workspace/ /gopath/src/$1
+export EXT_GOPATH="/gopath"
+mkdir -p $EXT_GOPATH/src
+cp -R /workspace/ $EXT_GOPATH/src/$1
 
-export GOOS
-export GOARCH
-for GOOS in $oses; do
-	for GOARCH in $arches; do
-		for cmd in $cmds; do
+mkdir /build
+
+for cmd in $cmds; do
+	TARGETS=""
+	for GOOS in $oses; do
+		for GOARCH in $arches; do
 			if [[ $GOOS == "windows" && $cmd == "upspinfs" ]]; then
 				# upspinfs doesn't run on Windows.
 				continue
 			fi
-			echo 1>&2 "Building $cmd for ${GOOS}_${GOARCH}"
-			/usr/local/go/bin/go install -v upspin.io/cmd/$cmd
+			TARGETS="$TARGETS ${GOOS}/${GOARCH}"
 		done
 	done
+	echo 1>&2 "Building $cmd for $TARGETS"
+	export TARGETS
+	$BUILD upspin.io/cmd/$cmd
 done
 
 function upspin() {
-	/gopath/bin/upspin -config=/config "$@"
+	/build/upspin-linux-amd64 -config=/config "$@"
 }
 
 for GOOS in $oses; do
 	for GOARCH in $arches; do
 		osarch="${GOOS}_${GOARCH}"
-		srcdir="/gopath/bin"
-		if [[ $osarch != "linux_amd64" ]]; then
-			srcdir="$srcdir/$osarch"
-		fi
 		destdir="$user/all/$osarch/$COMMIT_SHA"
 		for cmd in $cmds; do
 			if [[ $GOOS == "windows" && $cmd == "upspinfs" ]]; then
 				# upspinfs doesn't run on Windows.
 				continue
 			fi
+			# Use wildcard between os and arch to match OS version
+			# numbers in the binaries produced by xgo's build script.
+			src="/build/${cmd}-${GOOS}-*${GOARCH}"
 			if [[ $GOOS == "windows" ]]; then
 				# Windows commands have a ".exe" suffix.
+				src="${src}.exe"
 				cmd="${cmd}.exe"
 			fi
-			src="$srcdir/$cmd"
 			dest="$destdir/$cmd"
 			link="$linkdir/$cmd"
 			echo 1>&2 "Copying $src to $dest"
