@@ -3,7 +3,7 @@
 # This script builds the Upspin commands and pushes them to release@upspin.io.
 # It is executed by the release Docker container.
 # The Docker container provides the Upspin repo in the /workspace directory and
-# sets the environment COMMIT_HASH variable to the current Git commit hash of
+# sets the environment variable COMMIT_SHA to the current Git commit hash of
 # that repo.
 # The Docker container is built atop xgo (https://github.com/karalabe/xgo)
 # which is a framework for cross-compiling cgo-enabled binaries. Its magic
@@ -28,6 +28,9 @@ mkdir -p $EXT_GOPATH/src
 cp -R /workspace/ $EXT_GOPATH/src/$1
 
 mkdir /build
+
+# Generate the version strings for the commands.
+GOPATH="$EXT_GOPATH" go generate -run make_version upspin.io/version
 
 for cmd in $cmds; do
 	TARGETS=""
