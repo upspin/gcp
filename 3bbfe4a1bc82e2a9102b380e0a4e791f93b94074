@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "637a8b3e_4cd38e25",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-07-27T03:44:06Z",
+      "side": 1,
+      "message": "the environment variable COMMIT_SHA",
+      "revId": "3bbfe4a1bc82e2a9102b380e0a4e791f93b94074",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
