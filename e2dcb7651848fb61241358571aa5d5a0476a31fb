@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab95a4b4_c7351415",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-07-27T04:29:59Z",
+      "side": 1,
+      "message": "yeah I\u0027m not sure whether this will work or not\nprobably you want\n\nGOPATH\u003d\"$EXT_GOPATH\" go generate...",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "e2dcb7651848fb61241358571aa5d5a0476a31fb",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294c669d_a1319a64",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-07-27T04:29:59Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "e2dcb7651848fb61241358571aa5d5a0476a31fb",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
