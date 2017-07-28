@@ -1,0 +1,29 @@
+#cloud-config
+
+users:
+- name: upspin
+  uid: 2000
+
+runcmd:
+- iptables -w -A INPUT -p tcp --dport 443 -j ACCEPT
+
+write_files:
+- path: /etc/systemd/system/upspinserver.service
+  permissions: 0644
+  owner: root
+  content: |
+    [Unit]
+    Description=An upspinserver container instance
+    Wants=gcr-online.target
+    After=gcr-online.target
+    [Service]
+    Environment="HOME=/home/upspin"
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
+    ExecStart=/usr/bin/docker run --rm -u=2000 --volume=/home/upspin:/upspin -p=443:8443 --name=upspinserver gcr.io/upspin-containers/upspinserver:latest
+    ExecStop=/usr/bin/docker stop upspinserver
+    ExecStopPost=/usr/bin/docker rm upspinserver
+
+runcmd:
+- systemctl daemon-reload
+- systemctl start upspinserver.service
+

@@ -77,6 +77,7 @@ var (
 	all = flag.Bool("all", false, "Create/deploy/delete all servers")
 
 	releaseImage = flag.Bool("release-image", false, "Build release Docker image and exit")
+	serverImage  = flag.Bool("upspinserver-image", false, "Build upspinserver Docker image and exit")
 )
 
 func main() {
@@ -92,12 +93,21 @@ func main() {
 	}
 	flag.Parse()
 
+	log.SetFlags(0)
+	log.SetPrefix("upspin-deploy-gcp: ")
+
+	if *serverImage {
+		if err := buildServerImage(); err != nil {
+			log.Fatal(err)
+		}
+		return
+	}
+
 	mustProvideFlag(project, "-project")
 	if *releaseImage {
 		err := cdbuild(repoPath("cloud/docker/release"), *project, "release", "")
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			os.Exit(1)
+			log.Fatal(err)
 		}
 		return
 	}
@@ -133,14 +143,12 @@ func main() {
 	}
 
 	if err := cfg.checkCredentials(); err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	if *delete != "" {
 		if *delete != *project {
-			fmt.Fprintf(os.Stderr, "error: -delete must equal -project\n\n")
-			os.Exit(1)
+			log.Fatal("error: -delete must equal -project")
 		}
 		if err := wrap("delete", cfg.Delete()); err != nil {
 			log.Fatal(err)
@@ -495,7 +503,7 @@ func (c *Config) buildServer(server string) error {
 
 	// Collect source code for server and its dependencies.
 	pkgPath := "gcp.upspin.io/cmd/" + server + "-gcp"
-	if err := c.copySource(dir, pkgPath); err != nil {
+	if err := copySource(dir, pkgPath); err != nil {
 		return err
 	}
 
@@ -635,11 +643,11 @@ func (c *Config) prepareConfig(data []byte, server string) []byte {
 
 // copySource copies the source code for the specified package and all
 // its non-goroot dependencies to the specified workspace directory.
-func (c *Config) copySource(dir, pkgPath string) error {
+func copySource(dir, pkgPath string) error {
 	// Find all package dependencies.
 	cmd := exec.Command("go", "list", "-f", `{{join .Deps "\n"}}`, pkgPath)
 	cmd.Stderr = os.Stderr
-	cmd.Env = c.buildEnv()
+	cmd.Env = buildEnv()
 	out, err := cmd.Output()
 	if err != nil {
 		return err
@@ -650,7 +658,7 @@ func (c *Config) copySource(dir, pkgPath string) error {
 	args := []string{"list", "-f", `{{if not .Goroot}}{{.ImportPath}} {{.Dir}}{{end}}`, pkgPath}
 	cmd = exec.Command("go", append(args, deps...)...)
 	cmd.Stderr = os.Stderr
-	cmd.Env = c.buildEnv()
+	cmd.Env = buildEnv()
 	out, err = cmd.Output()
 	if err != nil {
 		return err
@@ -690,7 +698,7 @@ func (c *Config) copySource(dir, pkgPath string) error {
 	return nil
 }
 
-func (c *Config) buildEnv() (env []string) {
+func buildEnv() (env []string) {
 	for _, s := range os.Environ() {
 		switch {
 		case strings.HasPrefix(s, "GOOS="),
@@ -1203,4 +1211,28 @@ func cpDir(dst, src string) error {
 
 func repoPath(suffix string) string {
 	return filepath.Join(build.Default.GOPATH, "src/gcp.upspin.io", suffix)
+}
+
+func buildServerImage() error {
+	const (
+		project = "upspin-containers"
+		pkgPath = "gcp.upspin.io/cmd/upspinserver-gcp"
+	)
+	//if err := cdbuild(repoPath("cloud/docker/cloudbuild"), project, "cloudbuild", ""); err != nil {
+	//	return err
+	//}
+	dir, err := ioutil.TempDir("", "upspinserver-image")
+	if err != nil {
+		return err
+	}
+	defer os.RemoveAll(dir)
+	err = cp(filepath.Join(dir, "Dockerfile"), repoPath("cloud/docker/upspinserver/Dockerfile"))
+	if err != nil {
+		return err
+	}
+	err = copySource(dir, pkgPath)
+	if err != nil {
+		return err
+	}
+	return cdbuild(dir, project, "upspinserver", pkgPath)
 }
