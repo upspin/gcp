@@ -1,0 +1,12 @@
+This directory contains a Dockerfile for running upspinserver-gcp.
+The Docker image is routinely published to gcr.io/upspin-containers/upspinserver.
+
+To start a Google Compute Instance running the container, use this command:
+
+$ gcloud compute instances create $INSTANCE_NAME \
+	--image-family=cos-stable --image-project=cos-cloud \
+	--tags=https-server \
+	--zone=$ZONE \
+	--machine-type=n1-standard-1 \
+	--metadata-from-file=user-data=cloud-init.yaml
+
