@@ -11,14 +11,15 @@ import (
 	"io/ioutil"
 	"log"
 
+	"upspin.io/cloud/https"
+
 	"cloud.google.com/go/storage"
-	"golang.org/x/crypto/acme/autocert"
 	"google.golang.org/api/option"
 )
 
-// NewCache returns an autocert.Cache that stores the certificate cache in
+// NewCache returns an https.AutocertCache that stores the certificate cache in
 // the provided Google Cloud Storage bucket using the given file prefix.
-func NewCache(bucket, prefix string) (autocert.Cache, error) {
+func NewCache(bucket, prefix string) (https.AutocertCache, error) {
 	ctx := context.Background()
 	client, err := storage.NewClient(ctx, option.WithScopes(storage.ScopeFullControl))
 	if err != nil {
@@ -38,7 +39,7 @@ type autocertCache struct {
 func (cache autocertCache) Get(ctx context.Context, name string) ([]byte, error) {
 	r, err := cache.b.Object(cache.server + name).NewReader(ctx)
 	if err == storage.ErrObjectNotExist {
-		return nil, autocert.ErrCacheMiss
+		return nil, https.ErrAutocertCacheMiss
 	}
 	if err != nil {
 		return nil, err
@@ -50,14 +51,15 @@ func (cache autocertCache) Get(ctx context.Context, name string) ([]byte, error)
 func (cache autocertCache) Put(ctx context.Context, name string, data []byte) error {
 	// TODO(ehg) Do we need to add contentType="text/plain; charset=utf-8"?
 	w := cache.b.Object(cache.server + name).NewWriter(ctx)
-	_, err := w.Write(data)
-	if err != nil {
+	if _, err := w.Write(data); err != nil {
 		log.Printf("https: writing letsencrypt cache: %s %v", name, err)
+		return err
 	}
 	if err := w.Close(); err != nil {
 		log.Printf("https: writing letsencrypt cache: %s %v", name, err)
+		return err
 	}
-	return err
+	return nil
 }
 
 func (cache autocertCache) Delete(ctx context.Context, name string) error {
