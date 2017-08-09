@@ -624,6 +624,7 @@ func (c *Config) prepareConfig(data []byte, server string) []byte {
 	data = bytes.Replace(data, []byte("PROJECT"), []byte(c.Project), -1)
 	data = bytes.Replace(data, []byte("STORESERVERUSER"), []byte(c.storeServerUserName()), -1)
 	data = bytes.Replace(data, []byte("LOGLEVEL"), []byte(c.logLevel()), -1)
+	data = bytes.Replace(data, []byte("HOSTNAME"), []byte(c.hostName(server)), -1)
 
 	bucket := ""
 	switch server {
