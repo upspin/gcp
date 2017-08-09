@@ -222,12 +222,12 @@ func (c *Config) servers() (ss []string) {
 
 const defaultKeyServer = "key.upspin.io:443"
 
-func (c *Config) inProd() bool {
+func (c *Config) isUpspinCluster() bool {
 	// The upspin-prod and upspin-test projects were created
 	// before this script was written, and so they use some
 	// different names for things. We hard code those special
 	// things here to avoid re-creating everything.
-	return (c.Project == "upspin-prod" || c.Project == "upspin-test") && c.Prefix == ""
+	return (c.Project == "upspin-prod" || strings.HasPrefix(c.Project, "upspin-test")) && c.Prefix == ""
 }
 
 func (c *Config) Create() error {
@@ -563,32 +563,28 @@ func (c *Config) buildBaseImage() error {
 }
 
 func (c *Config) dirServerUserName() string {
-	if c.inProd() {
-		// HACK: see the comment on inProd.
+	if c.isUpspinCluster() {
 		return "upspin-dir@upspin.io"
 	}
 	return "upspin-dir@" + c.Domain
 }
 
 func (c *Config) storeServerUserName() string {
-	if c.inProd() {
-		// HACK: see the comment on inProd.
+	if c.isUpspinCluster() {
 		return "upspin-store@upspin.io"
 	}
 	return "upspin-store@" + c.Domain
 }
 
 func (c *Config) keyServerUserName() string {
-	if c.inProd() {
-		// HACK: see the comment on inProd.
+	if c.isUpspinCluster() {
 		return "upspin-key@upspin.io"
 	}
 	return "upspin-key@" + c.Domain
 }
 
 func (c *Config) frontendUserName() string {
-	if c.inProd() {
-		// HACK: see the comment on inProd.
+	if c.isUpspinCluster() {
 		return "upspin-frontend@upspin.io"
 	}
 	return "upspin-frontend@" + c.Domain
