@@ -664,13 +664,20 @@ func (c *Config) copySource(dir, pkgPath string) error {
 	}
 
 	if pkgPath == "gcp.upspin.io/cmd/frontend-gcp" {
-		gopath := build.Default.GOPATH
 		// Copy frontend dependencies not listed by `go list`.
-		for _, dir := range []string{"doc", "doc/images", "doc/templates"} {
-			s := fmt.Sprintf("%s %s\n",
-				filepath.Join("upspin.io", dir),
-				filepath.Join(gopath, "src/upspin.io", dir))
-			out = append(out, s...)
+		gopath := build.Default.GOPATH
+		root := filepath.Join(gopath, "src/upspin.io", "doc")
+		err := filepath.Walk(root, func(dir string, fi os.FileInfo, _ error) error {
+			if !fi.IsDir() {
+				return nil
+			}
+			tail := strings.TrimPrefix(dir, root)
+			pkg := filepath.Join("upspin.io", "doc", tail)
+			out = append(out, fmt.Sprintf("%s %s\n", pkg, dir)...)
+			return nil
+		})
+		if err != nil {
+			return err
 		}
 	}
 
