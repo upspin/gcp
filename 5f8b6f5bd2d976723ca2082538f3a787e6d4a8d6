@@ -16,6 +16,24 @@
       "revId": "5f8b6f5bd2d976723ca2082538f3a787e6d4a8d6",
       "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9bba95_db697500",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 5389
+      },
+      "writtenOn": "2017-08-10T00:54:45Z",
+      "side": 1,
+      "message": "yes it does. see line 670",
+      "parentUuid": "3783763c_9bc7e4d3",
+      "revId": "5f8b6f5bd2d976723ca2082538f3a787e6d4a8d6",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
     }
   ]
 }
