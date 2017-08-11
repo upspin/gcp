@@ -205,7 +205,7 @@ type Config struct {
 }
 
 var (
-	validServers   = []string{"dirserver", "storeserver", "keyserver", "frontend"}
+	validServers   = []string{"dirserver", "storeserver", "keyserver", "frontend", "hostserver"}
 	defaultServers = []string{"dirserver", "storeserver"}
 )
 
@@ -460,34 +460,20 @@ func (c *Config) buildServer(server string) error {
 			"secrets: /upspin",
 			"keyserver: "+c.endpoint("keyserver"),
 		)
+	case "hostserver":
+		err = writeConfig(dir,
+			"username: "+c.hostServerUserName(),
+			"secrets: /upspin",
+			"keyserver: "+c.endpoint("keyserver"),
+		)
 	}
 	if err != nil {
 		return err
 	}
 
-	var files []string
-	switch server {
-	case "dirserver":
-		files = []string{
-			"public.upspinkey",
-			"secret.upspinkey",
-		}
-	case "keyserver":
-		files = []string{
-			"mailconfig",
-			"public.upspinkey",
-			"secret.upspinkey",
-		}
-	case "storeserver":
-		files = []string{
-			"public.upspinkey",
-			"secret.upspinkey",
-		}
-	case "frontend":
-		files = []string{
-			"public.upspinkey",
-			"secret.upspinkey",
-		}
+	files := []string{
+		"public.upspinkey",
+		"secret.upspinkey",
 	}
 	home, err := config.Homedir()
 	if err != nil {
@@ -588,6 +574,10 @@ func (c *Config) frontendUserName() string {
 		return "upspin-frontend@upspin.io"
 	}
 	return "upspin-frontend@" + c.Domain
+}
+
+func (c *Config) hostServerUserName() string {
+	return "service@upspin.io"
 }
 
 func writeConfig(dir string, lines ...string) error {
@@ -758,6 +748,8 @@ func (c *Config) hostName(server string) string {
 		host = "dir"
 	case "frontend":
 		return c.Domain
+	case "hostserver":
+		host = "host"
 	default:
 		panic("unknown server: " + server)
 	}
