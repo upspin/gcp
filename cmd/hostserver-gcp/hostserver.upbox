@@ -1,0 +1,15 @@
+users:
+  - name: user
+  - name: host
+    dirserver: $hostserver-gcp
+    storeserver: $hostserver-gcp
+
+servers:
+  - name: keyserver
+  - name: storeserver
+  - name: dirserver
+  - name: hostserver-gcp
+    user: host
+    importpath: gcp.upspin.io/cmd/hostserver-gcp
+
+domain: example.com
