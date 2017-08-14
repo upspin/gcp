@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08530e5c_33a72538",
+        "filename": "cmd/hostserver-gcp/dns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "there. perhaps all the theiring you\u0027re doing is corrupting you :)",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee19253a_66b40546",
+        "filename": "cmd/hostserver-gcp/dns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "shouldn\u0027t we s/ip/IP/ everywhere? if it were me, i\u0027d write \u0027IP address\u0027 but that is overly fastidious.",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f3b847_559816bd",
+        "filename": "cmd/hostserver-gcp/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "s/then//",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20a81f6f_8f67f0c6",
+        "filename": "cmd/hostserver-gcp/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "s/uses/issues/",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2c8402_29e9ade1",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "s/serves/serve/",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38be6be5_d34e663f",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "that\u0027s a lot of serving. can you rewrite?",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c6e712_964aa694",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "it would have been clearer to me if these items (server and state) had been declared in the other order, with slightly different docs.",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69561a01_ae424428",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "const",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179a752f_4e65f730",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "this is fine. you could use path.Join",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c3e6ec_2385baaf",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "this sequence should be easier (in a library i mean). for another day.",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea029a55_2eb1c801",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "i know \u0027their\u0027 is considered ok now but it still wakes me up when i see it. it\u0027s usually easy to avoid the issue altogether. in this case the possessive isn\u0027t even important because the fields are arguments to the method.\n\n\n// packHost packs a file for the user containing the host and ip address. It then returns the entry after adding it to the cache.",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401f4ecf_ce336dd9",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "If the entry is unknown,",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7318699_2fbc6628",
+        "filename": "cmd/hostserver-gcp/server.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-14T05:53:42Z",
+      "side": 1,
+      "message": "gone",
+      "revId": "c0848688d8db17f2ba7b2c32117f7618d568b96c",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
