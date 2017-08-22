@@ -103,6 +103,15 @@ func (s *server) updateName(name upspin.UserName, ip string) (host string, err e
 	if err != nil {
 		return "", err
 	}
+	// Check whether the appropriate A record already exists,
+	// and do nothing if so.
+	if len(rrsets) == 1 && rrsets[0].Type == "A" {
+		if ds := rrsets[0].Rrdatas; len(ds) == 1 && ds[0] == ip {
+			return host, nil
+		}
+	}
+	// No appropriate A record exists; replace the existing
+	// records for this host with a new one.
 	change := &dns.Change{
 		Additions: []*dns.ResourceRecordSet{{
 			Name:    host + ".",
