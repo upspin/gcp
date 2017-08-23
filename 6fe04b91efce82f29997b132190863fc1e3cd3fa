@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "533885c0_77c8adf6",
+        "filename": "cloud/docker/upspinserver/README",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-23T01:32:27Z",
+      "side": 1,
+      "message": "published by whom?",
+      "revId": "6fe04b91efce82f29997b132190863fc1e3cd3fa",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf77c497_1abeb71b",
+        "filename": "cloud/docker/upspinserver/README",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-23T01:32:27Z",
+      "side": 1,
+      "message": "s/use/run/",
+      "revId": "6fe04b91efce82f29997b132190863fc1e3cd3fa",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2e843a_0fd95f32",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-23T01:32:27Z",
+      "side": 1,
+      "message": "should this be called -docker-image instead?",
+      "revId": "6fe04b91efce82f29997b132190863fc1e3cd3fa",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47dd34b4_2e71100b",
+        "filename": "cmd/upspin-deploy-gcp/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-08-23T01:32:27Z",
+      "side": 1,
+      "message": "log.Fatal? there are a bunch of these.\n\nworks neatly if you do\nlog.SetFlags(0)\nlog.SetPrefix(\"upspin-deploy-gcp\")",
+      "revId": "6fe04b91efce82f29997b132190863fc1e3cd3fa",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
