@@ -1,0 +1,19 @@
+{
+        "description": "upspin browser",
+        "triggerTemplate": {
+                "project_id": "PROJECT_ID",
+                "repo_name": "exp",
+                "branch_name": "master",
+        },
+        "build": {
+                "steps": [
+                        {
+                                "name": "gcr.io/PROJECT_ID/release",
+                                "args": ["exp.upspin.io"],
+                                "env": [
+                                        "COMMIT_SHA=$COMMIT_SHA",
+                                ],
+                        },
+                ],
+        },
+}

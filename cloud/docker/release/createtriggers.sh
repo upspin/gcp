@@ -6,6 +6,8 @@
 
 project=upspin-prod
 auth="$(gcloud config config-helper --format='value(credential.access_token)')"
-sed "s/PROJECT_ID/$project/" trigger.yaml | curl -X POST -T - \
-	-H "Authorization: Bearer $auth" \
-	https://cloudbuild.googleapis.com/v1/projects/$project/triggers
+for trigger in trigger-*.yaml; do
+	sed "s/PROJECT_ID/$project/" $trigger | curl -X POST -T - \
+		-H "Authorization: Bearer $auth" \
+		https://cloudbuild.googleapis.com/v1/projects/$project/triggers
+done
