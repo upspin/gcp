@@ -14,6 +14,10 @@ How it works
    c. Writes the resulting binaries to the release@upspin.io Upspin tree,
    d. Updates the links inside release@upspin.io/latest.
 
+How it works for non-core repositories (exp.upspin.io, for example)
+
+The same as the above, but step 4d is not performed.
+
 Setting it up
 
 This document assumes you have permissions to work with the 'upspin-prod'
@@ -25,6 +29,7 @@ First, log in with gcloud:
 Create a Source Repository named 'upspin' and configure it to mirror
 the contents of the github.com/upspin/upspin repo.
 	https://cloud.google.com/code/develop/repo
+Do the same for 'exp'.
 
 Generate the keys for release@upspin.io from the secret seed and put them in
 the 'gcp.upspin.io/cloud/docker/release/secrets' directory (talk to your fellow
@@ -39,11 +44,11 @@ Create the 'release' build step using upspin-deploy-gcp:
 Delete the secrets directory, to prevent leakages:
 	$ rm -r secrets
 
-Create a trigger that runs the 'release' build step
-on each new commit to the 'upspin' repo:
+Create a trigger that runs the relevant build steps
+on each new commit to the 'upspin' and 'exp' repos:
 	$ ./createtriggers.sh
 
-To test that everything is working, trigger the build manually:
+To test that everything is working, trigger the builds manually:
 	https://cloud.google.com/gcr/triggers
 Once complete, fresh binaries should be visible in the release@upspin.io tree.
 If the build fails, look at the log output of the build for clues:
