@@ -1,15 +1,15 @@
 {
-        "description": "upspin release",
+        "description": "upspin/exp",
         "triggerTemplate": {
                 "project_id": "PROJECT_ID",
-                "repo_name": "upspin",
+                "repo_name": "exp",
                 "branch_name": "master",
         },
         "build": {
                 "steps": [
                         {
                                 "name": "gcr.io/PROJECT_ID/release",
-                                "args": ["upspin.io"],
+                                "args": ["exp.upspin.io"],
                                 "env": [
                                         "COMMIT_SHA=$COMMIT_SHA",
                                 ],
