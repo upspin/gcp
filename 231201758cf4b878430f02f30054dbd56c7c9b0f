@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24cb2b7c_e19def42",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-09-28T03:17:06Z",
+      "side": 1,
+      "message": "a case statement works nicer and is easier to maintain.\n\ncase \"$repo\" in\nupspin.io|exp.upspin.io)\n ;;\n*)\n echo \u003e\u00262 \"must supply upspin.io or exp.upspin.io as first argument\"\n exit 1\nesac",
+      "revId": "231201758cf4b878430f02f30054dbd56c7c9b0f",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b9989e_cca14599",
+        "filename": "cloud/docker/release/makerelease.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-09-28T03:17:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "231201758cf4b878430f02f30054dbd56c7c9b0f",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
