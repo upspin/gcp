@@ -483,6 +483,9 @@ func (c *Config) buildServer(server string) error {
 		"public.upspinkey",
 		"secret.upspinkey",
 	}
+	if server == "keyserver" {
+		files = append(files, "mailconfig")
+	}
 	if server == "hostserver" {
 		files = append(files, "serviceaccount.json")
 	}
