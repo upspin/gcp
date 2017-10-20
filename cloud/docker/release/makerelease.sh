@@ -2,7 +2,7 @@
 
 # Usage:
 #   $ makerelease.sh <repo-base>
-# where repo-base is one of "upspin.io" or "exp.upspin.io".
+# where repo-base is one of "upspin.io" or "augie.upspin.io".
 #
 # This script builds Upspin commands for multiple platforms and pushes them to
 # the release@upspin.io Upspin tree.
@@ -30,10 +30,10 @@ user="release@upspin.io"
 repo="$1"
 
 case "$repo" in
-upspin.io|exp.upspin.io)
+upspin.io|augie.upspin.io)
 	;;
 *)
-	echo >&2 "must supply upspin.io or exp.upspin.io as first argument"
+	echo >&2 "must supply upspin.io or augie.upspin.io as first argument"
 	exit 1
 esac
 
@@ -43,16 +43,19 @@ mkdir -p $EXT_GOPATH/src
 cp -R /workspace/ $EXT_GOPATH/src/$repo
 mkdir /build
 
+# A short name for this repo; used in the's release path name.
+shortrepo="upspin"
+
 # The commands to build and distribute for repo "upspin.io".
 cmds="upspin upspinfs cacheserver"
 
-# For other repos, set cmds appropriately, fetch dependencies,
+# For other repos, set cmds appropriately,
 # and perform code generation.
 case "$repo" in
-exp.upspin.io)
-	cmds="browser"
-	GOPATH="$EXT_GOPATH" go get -d exp.upspin.io/cmd/browser
-	GOPATH="$EXT_GOPATH" go generate exp.upspin.io/cmd/browser/static
+augie.upspin.io)
+	shortrepo="augie"
+	cmds="upspin-ui"
+	GOPATH="$EXT_GOPATH" go generate augie.upspin.io/cmd/upspin-ui/static
 esac
 
 # Generate the version strings for the commands.
@@ -90,13 +93,7 @@ function upspin() {
 for GOOS in $oses; do
 	for GOARCH in $arches; do
 		osarch="${GOOS}_${GOARCH}"
-		destdir="${user}/all/${osarch}/$COMMIT_SHA"
-
-		# Non-core binaries are not versioned, for now.
-		# Just put them in a directory of their own.
-		if [[ "$repo" != "upspin.io" ]]; then
-			destdir="${user}/${repo}/${osarch}"
-		fi
+		destdir="${user}/${shortrepo}/commits/${osarch}/$COMMIT_SHA"
 
 		for cmd in $cmds; do
 			if [[ $GOOS == "windows" && $cmd == "upspinfs" ]]; then
@@ -111,19 +108,17 @@ for GOOS in $oses; do
 				src="${src}.exe"
 				cmd="${cmd}.exe"
 			fi
-			dest="$destdir/$cmd"
-			link="$linkdir/$cmd"
+			dest="${destdir}/${cmd}"
+			link="${linkdir}/${cmd}"
 			echo 1>&2 "Copying $src to $dest"
-			upspin mkdir $destdir || echo 1>&2 "mkdir can fail if the directory exists"
-			upspin cp $src $dest
+			upspin mkdir "$destdir" || echo 1>&2 "mkdir can fail if the directory exists"
+			upspin cp "$src" "$dest"
 		done
 
-		# For the versioned core binaries, re-link the 'latest' link.
-		if [[ "$repo" == "upspin.io" ]]; then
-			link="$user/latest/$osarch"
-			echo 1>&2 "Linking $link to $destdir"
-			upspin rm $link || echo 1>&2 "rm can fail if the link does not already exist"
-			upspin link $destdir $link
-		fi
+		# Re-link the 'latest' link.
+		link="${user}/${shortrepo}/latest/${osarch}"
+		echo 1>&2 "Linking $link to $destdir"
+		upspin rm "$link" || echo 1>&2 "rm can fail if the link does not already exist"
+		upspin link "$destdir" "$link"
 	done
 done
