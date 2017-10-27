@@ -59,13 +59,12 @@ augie.upspin.io)
 esac
 
 # Generate the version strings for the commands.
+GOPATH="$EXT_GOPATH" go generate -run make_version ${repo}/version
+
+# Build the upspin tool, used to copy the files to release@upspin.io. (Skip
+# this if we're operating on the core repo; we'll build it in the next step.)
 if [[ "$repo" != "upspin.io" ]]; then
 	GOPATH="$EXT_GOPATH" go get -d upspin.io/cmd/upspin
-fi
-GOPATH="$EXT_GOPATH" go generate -run make_version upspin.io/version
-
-# Build the upspin tool, used to copy the files to release@upspin.io.
-if [[ "$repo" != "upspin.io" ]]; then
 	TARGETS="linux/amd64" $BUILD upspin.io/cmd/upspin
 fi
 
