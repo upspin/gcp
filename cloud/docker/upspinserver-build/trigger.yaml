@@ -1,0 +1,23 @@
+{
+        "description": "upspinserver",
+        "triggerTemplate": {
+                "project_id": "PROJECT_ID",
+                "repo_name": "gcp",
+                "branch_name": "master",
+        },
+        "build": {
+                "steps": [
+                        {
+                                "name": "gcr.io/PROJECT_ID/upspinserver-build",
+                                "env": [
+                                        "COMMIT_SHA=$COMMIT_SHA",
+                                ],
+                        },
+                        {
+                                "name": "gcr.io/cloud-builders/docker",
+                                "args": ["build", "--tag=gcr.io/upspin-containers/upspinserverSUFFIX", "."],
+                        },
+                ],
+                "images": ["gcr.io/upspin-containers/upspinserverSUFFIX"],
+        },
+}
