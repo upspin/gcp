@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "385a54df_276cb0fe",
+        "filename": "cloud/docker/upspinserver-build/README",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-10-31T06:15:43Z",
+      "side": 1,
+      "message": "Buler?",
+      "revId": "059cd6d58933cd7b82b86ad55fa754af6b5e4698",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1e4a49_10f3f0d6",
+        "filename": "cloud/docker/upspinserver-build/README",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-10-31T06:15:43Z",
+      "side": 1,
+      "message": "is it ok to publish this? (too late!)",
+      "revId": "059cd6d58933cd7b82b86ad55fa754af6b5e4698",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ec7364_3a0fc2b2",
+        "filename": "cloud/docker/upspinserver-build/createtriggers.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-10-31T06:15:43Z",
+      "side": 1,
+      "message": "s/called/run only/ ?",
+      "revId": "059cd6d58933cd7b82b86ad55fa754af6b5e4698",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "578e91de_efe2af95",
+        "filename": "cloud/docker/upspinserver-build/createtriggers.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5305
+      },
+      "writtenOn": "2017-10-31T06:15:43Z",
+      "side": 1,
+      "message": "check $1 more carefully. anything thing else is an error.\ni might go with \"$@\" \u003d\u003d \"-prod\"",
+      "revId": "059cd6d58933cd7b82b86ad55fa754af6b5e4698",
+      "serverId": "0759ed4b-3fdc-34dc-866b-f2e708168c03",
+      "unresolved": true
+    }
+  ]
+}
