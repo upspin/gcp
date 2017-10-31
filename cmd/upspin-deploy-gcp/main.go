@@ -96,14 +96,13 @@ func main() {
 	log.SetFlags(0)
 	log.SetPrefix("upspin-deploy-gcp: ")
 
+	mustProvideFlag(project, "-project")
 	if *serverImage {
-		if err := buildServerImage(); err != nil {
+		if err := buildServerImage(*project); err != nil {
 			log.Fatal(err)
 		}
 		return
 	}
-
-	mustProvideFlag(project, "-project")
 	if *releaseImage {
 		err := cdbuild(repoPath("cloud/docker/release"), *project, "release", "")
 		if err != nil {
@@ -1216,26 +1215,19 @@ func repoPath(suffix string) string {
 	return filepath.Join(build.Default.GOPATH, "src/gcp.upspin.io", suffix)
 }
 
-func buildServerImage() error {
-	const (
-		project = "upspin-containers"
-		pkgPath = "gcp.upspin.io/cmd/upspinserver-gcp"
-	)
-	//if err := cdbuild(repoPath("cloud/docker/cloudbuild"), project, "cloudbuild", ""); err != nil {
-	//	return err
-	//}
-	dir, err := ioutil.TempDir("", "upspinserver-image")
+func buildServerImage(project string) error {
+	dir, err := ioutil.TempDir("", "upspinserver-build-image")
 	if err != nil {
 		return err
 	}
 	defer os.RemoveAll(dir)
-	err = cp(filepath.Join(dir, "Dockerfile"), repoPath("cloud/docker/upspinserver/Dockerfile"))
+	err = cp(filepath.Join(dir, "Dockerfile"), repoPath("cloud/docker/upspinserver-build/Dockerfile"))
 	if err != nil {
 		return err
 	}
-	err = copySource(dir, pkgPath)
+	err = cp(filepath.Join(dir, "mkupspinserver.sh"), repoPath("cloud/docker/upspinserver-build/mkupspinserver.sh"))
 	if err != nil {
 		return err
 	}
-	return cdbuild(dir, project, "upspinserver", pkgPath)
+	return cdbuild(dir, project, "upspinserver-build", "")
 }
