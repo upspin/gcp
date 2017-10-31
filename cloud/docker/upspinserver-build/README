@@ -1,0 +1,51 @@
+This directory contains the scripts for creating a Google Container Buler build
+step and trigger for building the gcr.io/upspin-containers/upspinserver image.
+This image is used by servers deployed by upspin-ui.
+
+How it works
+
+1. Gerrit pushes a commit to the github.com/upspin/gcp repository.
+2. Google's infrastructure automatically pulls that commit into a private Git
+   repo inside the upspin-prod Google Cloud Project.
+3. Step 2 triggers a Google Container Builder build, which launches a Docker
+   image to build the release.
+4. The build steps:
+   a. Build the upspinserver-gcp binary.
+   b. Build a Docker image and push it to gcr.io/upspin-containers/upspinserver.
+
+Setting it up
+
+This document assumes you have permissions to work with the 'upspin-prod'
+and 'upspin-containers' Google Cloud projects.
+
+First, log in with gcloud:
+	$ gcloud auth login
+
+Create a Source Repository named 'gcp' and configure it to mirror
+the contents of the github.com/upspin/gcp repo.
+	https://cloud.google.com/code/develop/repo
+
+Create the 'upspinserver' build step using upspin-deploy-gcp:
+	$ go get gcp.upspin.io/cmd/upspin-deploy-gcp
+	$ upspin-deploy-gcp -release-image
+
+Create a trigger that runs the relevant build steps
+on each new commit to the 'gcp':
+	$ ./createtriggers.sh -prod
+(Without -prod it creates the trigger in the upspin-test repo.)
+
+In the 'upspin-containers' project, adjust the permissions of the Storage
+bucket named
+	artifacts.upspin-containers.appspot.com
+giving the service account 
+	901285477962@cloudbuild.gserviceaccount.com
+the 'Cloud Container Builder' role. (The number in the service account
+name is the numeric Project ID of 'upspin-prod'.)
+
+To test that everything is working, trigger the builds manually:
+	https://cloud.google.com/gcr/triggers
+Once complete, a fresh image should be available at
+	gcr.io/upspin-containers/upspinserver
+If the build fails, look at the log output of the build for clues:
+	https://cloud.google.com/gcr/builds
+
