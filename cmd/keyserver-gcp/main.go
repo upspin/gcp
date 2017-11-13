@@ -46,7 +46,6 @@ func main() {
 		cloudLog.Connect(*project, serverName)
 		// Disable logging locally so we don't pay the price of local
 		// unbuffered writes on a busy server.
-		log.SetOutput(nil)
 		svr, err := gcpmetric.NewSaver(*project, metricSampleSize, metricMaxQPS, "serverName", serverName)
 		if err != nil {
 			log.Fatalf("Can't start a metric saver for GCP project %q: %s", *project, err)
