@@ -95,7 +95,7 @@
   branch = "master"
   name = "upspin.io"
   packages = ["access","bind","cache","client","client/clientutil","client/file","cloud/https","cloud/mail","cloud/mail/sendgrid","cloud/storage","config","dir/inprocess","dir/remote","dir/server","dir/server/serverlog","dir/server/tree","dir/unassigned","errors","factotum","flags","key/inprocess","key/remote","key/server","key/sha256key","key/transports","key/unassigned","key/usercache","log","metric","pack","pack/ee","pack/eeintegrity","pack/internal","pack/packutil","pack/plain","path","rpc","rpc/dirserver","rpc/keyserver","rpc/local","rpc/storeserver","serverutil","serverutil/dirserver","serverutil/frontend","serverutil/keyserver","serverutil/perm","serverutil/signup","serverutil/storeserver","serverutil/upspinserver","serverutil/web","shutdown","store/inprocess","store/remote","store/server","store/transports","store/unassigned","subcmd","test/testutil","transports","upspin","upspin/proto","user","valid","version"]
-  revision = "c8e3ca561f91dcadb39217533d6c80aec15ed890"
+  revision = "334666d02f3b336a67e541ad38ff942466a00d9f"
 
 [solve-meta]
   analyzer-name = "dep"
