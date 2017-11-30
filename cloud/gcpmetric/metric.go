@@ -57,7 +57,7 @@ var onFlush = func() {}
 // as labels on GCP. They are useful, for example, in the case of
 // differentiating a metric coming from a test instance versus production.
 func NewSaver(projectID string, n, maxQPS int, labels ...string) (metric.Saver, error) {
-	const op = "gcpmetric.New"
+	const op errors.Op = "gcpmetric.New"
 	// Authentication is provided by the gcloud tool when running locally, and
 	// by the associated service account when running on Compute Engine.
 	client, err := google.DefaultClient(context.Background(), trace.CloudPlatformScope)
@@ -73,7 +73,7 @@ func NewSaver(projectID string, n, maxQPS int, labels ...string) (metric.Saver, 
 		return nil, errors.E(op, errors.IO, err)
 	}
 	if len(labels)%2 != 0 {
-		return nil, errors.E(op, errors.Invalid, errors.Str("metric labels must come in pairs"))
+		return nil, errors.E(op, errors.Invalid, "metric labels must come in pairs")
 	}
 
 	var rate *serverutil.RateLimiter
@@ -173,7 +173,7 @@ func (g *gcpSaver) prepareToSave(m *metric.Metric) *trace.Trace {
 		}
 		traceSpans[i] = &trace.TraceSpan{
 			SpanId:    uint64(i + 1),
-			Name:      s.Name,
+			Name:      string(s.Name),
 			StartTime: formatTime(s.StartTime),
 			EndTime:   formatTime(s.EndTime),
 			Kind:      toKindString(s.Kind),
