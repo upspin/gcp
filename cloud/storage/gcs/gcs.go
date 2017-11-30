@@ -60,7 +60,7 @@ type gcsImpl struct {
 
 // New initializes a Storage implementation that stores data to Google Cloud Storage.
 func New(opts *storage.Opts) (storage.Storage, error) {
-	const op = "cloud/storage/gcs.New"
+	const op errors.Op = "cloud/storage/gcs.New"
 
 	bucket, ok := opts.Opts[bucketName]
 	if !ok {
@@ -122,7 +122,7 @@ func (gcs *gcsImpl) LinkBase() (base string, err error) {
 
 // Download implements Storage.
 func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
-	const op = "cloud/storage/gcs.Download"
+	const op errors.Op = "cloud/storage/gcs.Download"
 	resp, err := gcs.service.Objects.Get(gcs.bucketName, ref).Download()
 	if err != nil {
 		if gcsErr, ok := err.(*googleapi.Error); ok && gcsErr.Code == 404 {
@@ -140,7 +140,7 @@ func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
 
 // Put implements Storage.
 func (gcs *gcsImpl) Put(ref string, contents []byte) error {
-	const op = "cloud/storage/gcs.Put"
+	const op errors.Op = "cloud/storage/gcs.Put"
 	for tries := 0; ; tries++ {
 		_, err := gcs.service.Objects.Insert(gcs.bucketName, &gcsBE.Object{Name: ref}).
 			Media(bytes.NewReader(contents)).

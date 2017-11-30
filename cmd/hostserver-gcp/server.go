@@ -252,7 +252,7 @@ func (s dirServer) Put(de *upspin.DirEntry) (*upspin.DirEntry, error) {
 	}
 	parts := strings.Split(p.FilePath(), "/")
 	if len(parts) != 2 {
-		return nil, errors.E(errors.Permission, de.Name, errors.Str("file names must be of the form user@example.com/ip"))
+		return nil, errors.E(errors.Permission, de.Name, "file names must be of the form user@example.com/ip")
 	}
 	user, ip := upspin.UserName(parts[0]), parts[1]
 	if user != s.user {
@@ -286,7 +286,7 @@ func (s storeServer) Get(ref upspin.Reference) ([]byte, *upspin.Refdata, []upspi
 
 // The DirServer and StoreServer methods below are not implemented.
 
-var errNotImplemented = errors.E(errors.Invalid, errors.Str("method not implemented"))
+var errNotImplemented = errors.E(errors.Invalid, "method not implemented")
 
 func (dirServer) Delete(name upspin.PathName) (*upspin.DirEntry, error) {
 	return nil, errNotImplemented
