@@ -162,6 +162,31 @@ func (gcs *gcsImpl) Delete(ref string) error {
 	return gcs.service.Objects.Delete(gcs.bucketName, ref).Do()
 }
 
+// List returns the references held by this storage implementation.
+func (gcs *gcsImpl) List() ([]storage.RefInfo, error) {
+	var info []storage.RefInfo
+	for next := ""; ; {
+		call := gcs.service.Objects.List(gcs.bucketName)
+		if next != "" {
+			call = call.PageToken(next)
+		}
+		objs, err := call.Do()
+		if err != nil {
+			return nil, err
+		}
+		for _, obj := range objs.Items {
+			info = append(info, storage.RefInfo{
+				Ref:  obj.Name,
+				Size: int64(obj.Size),
+			})
+		}
+		next = objs.NextPageToken
+		if next == "" {
+			return info, nil
+		}
+	}
+}
+
 // emptyBucket completely removes all files in a bucket permanently.
 // If verbose is true, every attempt to delete a file is logged to the standard logger.
 // This is an expensive operation. It is also dangerous, so use with care.
