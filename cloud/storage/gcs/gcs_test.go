@@ -68,6 +68,32 @@ func TestDelete(t *testing.T) {
 	}
 }
 
+func TestList(t *testing.T) {
+	type lister interface {
+		List() ([]string, error)
+	}
+	ls, ok := client.(lister)
+	if !ok {
+		t.Fatal("impl does not provide List method")
+	}
+	refs, err := ls.List()
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("list: %v", refs)
+
+	err = client.Put("test", testData)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	refs, err = ls.List()
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("list: %v", refs)
+}
+
 func TestMain(m *testing.M) {
 	flag.Parse()
 	if !*useGcloud {
