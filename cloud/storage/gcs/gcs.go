@@ -112,15 +112,18 @@ func init() {
 	storage.Register("GCS", New)
 }
 
-// Guarantee we implement the Storage interface.
+// Guarantee we implement the storage.Storage interface.
 var _ storage.Storage = (*gcsImpl)(nil)
 
-// LinkBase implements Storage.
+// Guarantee we implement the storage.Lister interface.
+var _ storage.Lister = (*gcsImpl)(nil)
+
+// LinkBase implements storage.Storage.
 func (gcs *gcsImpl) LinkBase() (base string, err error) {
 	return "https://storage.googleapis.com/" + gcs.bucketName + "/", nil
 }
 
-// Download implements Storage.
+// Download implements storage.Storage.
 func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
 	const op errors.Op = "cloud/storage/gcs.Download"
 	resp, err := gcs.service.Objects.Get(gcs.bucketName, ref).Download()
@@ -138,7 +141,7 @@ func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
 	return buf, nil
 }
 
-// Put implements Storage.
+// Put implements storage.Storage.
 func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 	const op errors.Op = "cloud/storage/gcs.Put"
 	for tries := 0; ; tries++ {
@@ -157,9 +160,33 @@ func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 	}
 }
 
-// Delete implements Storage.
+// Delete implements storage.Storage.
 func (gcs *gcsImpl) Delete(ref string) error {
 	return gcs.service.Objects.Delete(gcs.bucketName, ref).Do()
+}
+
+// maxResults specifies the number of references to return from each call to
+// List. The Cloud Storage API limits this to 1000. It is a variable here so
+// that it may be overridden in tests.
+var maxResults int64 = 1000
+
+// List implements storage.Lister.
+func (gcs *gcsImpl) List(token string) (refs []storage.RefInfo, nextToken string, err error) {
+	call := gcs.service.Objects.List(gcs.bucketName).MaxResults(maxResults)
+	if token != "" {
+		call = call.PageToken(token)
+	}
+	objs, err := call.Do()
+	if err != nil {
+		return nil, "", err
+	}
+	for _, obj := range objs.Items {
+		refs = append(refs, storage.RefInfo{
+			Ref:  obj.Name,
+			Size: int64(obj.Size),
+		})
+	}
+	return refs, objs.NextPageToken, nil
 }
 
 // emptyBucket completely removes all files in a bucket permanently.
@@ -180,13 +207,17 @@ func (gcs *gcsImpl) emptyBucket(verbose bool) error {
 		return true
 	}
 	for {
-		objs, err := gcs.service.Objects.List(gcs.bucketName).MaxResults(maxParallelDeletes).Fields("items(name),nextPageToken").PageToken(pageToken).Do()
+		objs, err := gcs.service.Objects.List(gcs.bucketName).
+			MaxResults(maxParallelDeletes).
+			Fields("items(name),nextPageToken").
+			PageToken(pageToken).
+			Do()
 		if recordErr(err) {
 			log.Error.Printf("emptyBucket: List(%q): %v", gcs.bucketName, err)
 			break
 		}
 		if verbose {
-			log.Printf("Going to delete %d items from bucket %s", len(objs.Items), gcs.bucketName)
+			log.Printf("Deleting %d items from bucket %s", len(objs.Items), gcs.bucketName)
 		}
 		for _, o := range objs.Items {
 			if verbose {
