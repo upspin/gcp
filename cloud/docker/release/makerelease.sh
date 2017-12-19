@@ -47,7 +47,7 @@ mkdir /build
 shortrepo="upspin"
 
 # The commands to build and distribute for repo "upspin.io".
-cmds="upspin upspinfs cacheserver"
+cmds="upspin upspinfs cacheserver upspin-audit"
 
 # For other repos, set cmds appropriately,
 # and perform code generation.
