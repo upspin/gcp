@@ -132,12 +132,12 @@ func (gcs *gcsImpl) Download(ref string) ([]byte, error) {
 		if gcsErr, ok := err.(*googleapi.Error); ok && gcsErr.Code == 404 {
 			return nil, errors.E(op, errors.NotExist, err)
 		}
-		return nil, err
+		return nil, errors.E(op, err)
 	}
 	defer resp.Body.Close()
 	buf, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return nil, errors.E(op, err)
 	}
 	return buf, nil
 }
@@ -153,7 +153,10 @@ func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 		if err == nil {
 			return nil
 		}
-		if !strings.Contains(err.Error(), "503") || tries > 4 {
+		if !strings.Contains(err.Error(), "503") {
+			return errors.E(op, err)
+		}
+		if tries > 4 {
 			return errors.E(op, errors.Transient, err)
 		}
 		log.Info.Printf("cloud/storage/gcs: WARNING: retrying Insert(%s): %s", ref, err)
@@ -163,7 +166,15 @@ func (gcs *gcsImpl) Put(ref string, contents []byte) error {
 
 // Delete implements storage.Storage.
 func (gcs *gcsImpl) Delete(ref string) error {
-	return gcs.service.Objects.Delete(gcs.bucketName, ref).Do()
+	const op errors.Op = "cloud/storage/gcs.Delete"
+	err := gcs.service.Objects.Delete(gcs.bucketName, ref).Do()
+	if err != nil {
+		if gcsErr, ok := err.(*googleapi.Error); ok && gcsErr.Code == 404 {
+			return errors.E(op, errors.NotExist, err)
+		}
+		return errors.E(op, err)
+	}
+	return nil
 }
 
 // maxResults specifies the number of references to return from each call to
