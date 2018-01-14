@@ -13,4 +13,5 @@ spec:
       - name: PREFIXstoreserver
         image: gcr.io/PROJECT/PREFIXstoreserver
         ports:
+        - containerPort: 80
         - containerPort: 443
