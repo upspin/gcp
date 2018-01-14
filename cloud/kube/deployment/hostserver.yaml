@@ -13,4 +13,5 @@ spec:
       - name: PREFIXhostserver
         image: gcr.io/PROJECT/PREFIXhostserver
         ports:
+        - containerPort: 80
         - containerPort: 443
