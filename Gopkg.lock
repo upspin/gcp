@@ -3,7 +3,17 @@
 
 [[projects]]
   name = "cloud.google.com/go"
-  packages = ["compute/metadata","iam","internal","internal/optional","internal/version","logging","logging/apiv2","logging/internal","storage"]
+  packages = [
+    "compute/metadata",
+    "iam",
+    "internal",
+    "internal/optional",
+    "internal/version",
+    "logging",
+    "logging/apiv2",
+    "logging/internal",
+    "storage"
+  ]
   revision = "eaddaf6dd7ee35fd3c2420c8d27478db176b0485"
   version = "v0.15.0"
 
@@ -16,7 +26,16 @@
 [[projects]]
   branch = "master"
   name = "github.com/golang/protobuf"
-  packages = ["proto","protoc-gen-go/descriptor","ptypes","ptypes/any","ptypes/duration","ptypes/empty","ptypes/struct","ptypes/timestamp"]
+  packages = [
+    "proto",
+    "protoc-gen-go/descriptor",
+    "ptypes",
+    "ptypes/any",
+    "ptypes/duration",
+    "ptypes/empty",
+    "ptypes/struct",
+    "ptypes/timestamp"
+  ]
   revision = "1643683e1b54a9e88ad26d98f81400c8c9d9f4f9"
 
 [[projects]]
@@ -34,19 +53,38 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
-  packages = ["acme","acme/autocert","hkdf"]
+  packages = [
+    "acme",
+    "acme/autocert",
+    "hkdf"
+  ]
   revision = "13931e22f9e72ea58bb73048bc752b48c6d4d4ac"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
-  packages = ["context","context/ctxhttp","http2","http2/hpack","idna","internal/timeseries","lex/httplex","trace"]
+  packages = [
+    "context",
+    "context/ctxhttp",
+    "http2",
+    "http2/hpack",
+    "idna",
+    "internal/timeseries",
+    "lex/httplex",
+    "trace"
+  ]
   revision = "c73622c77280266305273cb545f54516ced95b93"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/oauth2"
-  packages = [".","google","internal","jws","jwt"]
+  packages = [
+    ".",
+    "google",
+    "internal",
+    "jws",
+    "jwt"
+  ]
   revision = "bb50c06baba3d0c76f9d125c0719093e315b5b44"
 
 [[projects]]
@@ -58,30 +96,109 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
-  packages = ["cases","internal","internal/gen","internal/tag","internal/triegen","internal/ucd","language","runes","secure/bidirule","secure/precis","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable","width"]
+  packages = [
+    "cases",
+    "internal",
+    "internal/gen",
+    "internal/tag",
+    "internal/triegen",
+    "internal/ucd",
+    "language",
+    "runes",
+    "secure/bidirule",
+    "secure/precis",
+    "transform",
+    "unicode/bidi",
+    "unicode/cldr",
+    "unicode/norm",
+    "unicode/rangetable",
+    "width"
+  ]
   revision = "6eab0e8f74e86c598ec3b6fad4888e0c11482d48"
 
 [[projects]]
   branch = "master"
   name = "google.golang.org/api"
-  packages = ["cloudbuild/v1","cloudtrace/v1","compute/v1","container/v1","dns/v1","gensupport","googleapi","googleapi/internal/uritemplates","googleapi/transport","iam/v1","internal","iterator","option","storage/v1","support/bundler","transport","transport/grpc","transport/http"]
+  packages = [
+    "cloudbuild/v1",
+    "cloudtrace/v1",
+    "compute/v1",
+    "container/v1",
+    "dns/v1",
+    "gensupport",
+    "googleapi",
+    "googleapi/internal/uritemplates",
+    "googleapi/transport",
+    "iam/v1",
+    "internal",
+    "iterator",
+    "option",
+    "storage/v1",
+    "support/bundler",
+    "transport",
+    "transport/grpc",
+    "transport/http"
+  ]
   revision = "672d215daf0631fcae4c08c2a4324a763aaaf789"
 
 [[projects]]
   name = "google.golang.org/appengine"
-  packages = [".","internal","internal/app_identity","internal/base","internal/datastore","internal/log","internal/modules","internal/remote_api","internal/socket","internal/urlfetch","socket","urlfetch"]
+  packages = [
+    ".",
+    "internal",
+    "internal/app_identity",
+    "internal/base",
+    "internal/datastore",
+    "internal/log",
+    "internal/modules",
+    "internal/remote_api",
+    "internal/socket",
+    "internal/urlfetch",
+    "socket",
+    "urlfetch"
+  ]
   revision = "150dc57a1b433e64154302bdc40b6bb8aefa313a"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
   name = "google.golang.org/genproto"
-  packages = ["googleapis/api/annotations","googleapis/api/distribution","googleapis/api/label","googleapis/api/metric","googleapis/api/monitoredres","googleapis/iam/v1","googleapis/logging/type","googleapis/logging/v2","googleapis/rpc/status","protobuf/field_mask"]
+  packages = [
+    "googleapis/api/annotations",
+    "googleapis/api/distribution",
+    "googleapis/api/label",
+    "googleapis/api/metric",
+    "googleapis/api/monitoredres",
+    "googleapis/iam/v1",
+    "googleapis/logging/type",
+    "googleapis/logging/v2",
+    "googleapis/rpc/status",
+    "protobuf/field_mask"
+  ]
   revision = "f676e0f3ac6395ff1a529ae59a6670878a8371a6"
 
 [[projects]]
   name = "google.golang.org/grpc"
-  packages = [".","balancer","codes","connectivity","credentials","credentials/oauth","grpclb/grpc_lb_v1/messages","grpclog","internal","keepalive","metadata","naming","peer","resolver","stats","status","tap","transport"]
+  packages = [
+    ".",
+    "balancer",
+    "codes",
+    "connectivity",
+    "credentials",
+    "credentials/oauth",
+    "grpclb/grpc_lb_v1/messages",
+    "grpclog",
+    "internal",
+    "keepalive",
+    "metadata",
+    "naming",
+    "peer",
+    "resolver",
+    "stats",
+    "status",
+    "tap",
+    "transport"
+  ]
   revision = "61d37c5d657a47e4404fd6823bd598341a2595de"
   version = "v1.7.1"
 
@@ -94,8 +211,73 @@
 [[projects]]
   branch = "master"
   name = "upspin.io"
-  packages = ["access","bind","cache","client","client/clientutil","client/file","cloud/https","cloud/mail","cloud/mail/sendgrid","cloud/storage","config","dir/inprocess","dir/remote","dir/server","dir/server/serverlog","dir/server/tree","dir/unassigned","errors","factotum","flags","key/inprocess","key/remote","key/server","key/sha256key","key/transports","key/unassigned","key/usercache","log","metric","pack","pack/ee","pack/eeintegrity","pack/internal","pack/packutil","pack/plain","path","rpc","rpc/dirserver","rpc/keyserver","rpc/local","rpc/storeserver","serverutil","serverutil/dirserver","serverutil/frontend","serverutil/keyserver","serverutil/perm","serverutil/signup","serverutil/storeserver","serverutil/upspinserver","serverutil/web","shutdown","store/inprocess","store/remote","store/server","store/transports","store/unassigned","subcmd","test/testutil","transports","upspin","upspin/proto","user","valid","version"]
-  revision = "6449eeed647988952316dc9dc9e323d06851125c"
+  packages = [
+    "access",
+    "bind",
+    "cache",
+    "client",
+    "client/clientutil",
+    "client/file",
+    "cloud/https",
+    "cloud/mail",
+    "cloud/mail/sendgrid",
+    "cloud/storage",
+    "config",
+    "dir/inprocess",
+    "dir/remote",
+    "dir/server",
+    "dir/server/serverlog",
+    "dir/server/tree",
+    "dir/unassigned",
+    "errors",
+    "factotum",
+    "flags",
+    "key/inprocess",
+    "key/remote",
+    "key/server",
+    "key/sha256key",
+    "key/transports",
+    "key/unassigned",
+    "key/usercache",
+    "log",
+    "metric",
+    "pack",
+    "pack/ee",
+    "pack/eeintegrity",
+    "pack/internal",
+    "pack/packutil",
+    "pack/plain",
+    "path",
+    "rpc",
+    "rpc/dirserver",
+    "rpc/keyserver",
+    "rpc/local",
+    "rpc/storeserver",
+    "serverutil",
+    "serverutil/dirserver",
+    "serverutil/frontend",
+    "serverutil/keyserver",
+    "serverutil/perm",
+    "serverutil/signup",
+    "serverutil/storeserver",
+    "serverutil/upspinserver",
+    "serverutil/web",
+    "shutdown",
+    "store/inprocess",
+    "store/remote",
+    "store/server",
+    "store/transports",
+    "store/unassigned",
+    "subcmd",
+    "test/testutil",
+    "transports",
+    "upspin",
+    "upspin/proto",
+    "user",
+    "valid",
+    "version"
+  ]
+  revision = "2e37c3b2c427b239f286de76ee3379ece3b2a636"
 
 [solve-meta]
   analyzer-name = "dep"
