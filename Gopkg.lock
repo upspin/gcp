@@ -277,7 +277,7 @@
     "valid",
     "version"
   ]
-  revision = "2e37c3b2c427b239f286de76ee3379ece3b2a636"
+  revision = "e44151808db2e821ace484960836205230adb05e"
 
 [solve-meta]
   analyzer-name = "dep"
