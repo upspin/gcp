@@ -27,7 +27,7 @@ the contents of the github.com/upspin/gcp repo.
 
 Create the 'upspinserver' build step using upspin-deploy-gcp:
 	$ go get gcp.upspin.io/cmd/upspin-deploy-gcp
-	$ upspin-deploy-gcp -release-image
+	$ upspin-deploy-gcp -upspinserver-image
 
 Create a trigger that runs the relevant build steps
 on each new commit to the 'gcp':
