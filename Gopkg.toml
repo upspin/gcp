@@ -1,9 +1,18 @@
-# golang.org/x/text/gen.go imports this package; we don't depend on it.
-ignored = ["golang.org/x/text/collate"]
+ignored = [
+  # golang.org/x/text/gen.go imports this package; we don't depend on it.
+  "golang.org/x/text/collate",
+  # These are brought in by cloud.google.com/go/tools.go; ignore them.
+  "github.com/BurntSushi/toml",
+  "github.com/jstemmer/go-junit-report",
+  "golang.org/x/exp/cmd/apidiff",
+  "golang.org/x/lint/golint",
+  "golang.org/x/tools/cmd/goimports",
+  "honnef.co/go/tools/cmd/staticcheck",
+]
 
 [[constraint]]
   name = "cloud.google.com/go"
-  version = "0.15.0"
+  version = "0.49.0"
 
 [[constraint]]
   branch = "master"
