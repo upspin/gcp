@@ -2,6 +2,6 @@
 # builder to just build the file. (The script as part of the go builder wants
 # to do something else. Sigh.)
 
-FROM golang:1.11
+FROM golang:1.13
 ENV GOPATH /workspace
 ENTRYPOINT ["/usr/local/go/bin/go"]
