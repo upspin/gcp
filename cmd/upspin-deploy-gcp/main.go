@@ -399,7 +399,7 @@ func (c *Config) enableAPIs() error {
 
 	// See which APIs are enabled already.
 	var out bytes.Buffer
-	cmd = exec.Command("gcloud", "--project", c.Project, "beta", "service-management", "list")
+	cmd = exec.Command("gcloud", "--project", c.Project, "services", "list")
 	cmd.Stdout = &out
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
@@ -421,7 +421,7 @@ func (c *Config) enableAPIs() error {
 			continue
 		}
 		log.Printf("Enabling API %q", api)
-		cmd := exec.Command("gcloud", "--project", c.Project, "beta", "service-management", "enable", api)
+		cmd := exec.Command("gcloud", "--project", c.Project, "services", "enable", api)
 		if out, err := cmd.CombinedOutput(); err != nil {
 			return fmt.Errorf("enabling API %q: %v\n%s", api, err, out)
 		}
@@ -782,7 +782,7 @@ func (c *Config) createNetwork() error {
 	}
 
 	network := &compute.Network{
-		Name: c.networkName(),
+		Name:                  c.networkName(),
 		AutoCreateSubnetworks: true,
 	}
 	op, err := svc.Networks.Insert(c.Project, network).Do()
