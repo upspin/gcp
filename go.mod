@@ -3,15 +3,14 @@ module gcp.upspin.io
 go 1.13
 
 require (
-	cloud.google.com/go v0.15.0
-	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect
+	cloud.google.com/go v0.49.0
+	cloud.google.com/go/logging v1.0.0
+	cloud.google.com/go/storage v1.0.0
 	github.com/google/go-cmp v0.3.1 // indirect
-	github.com/googleapis/gax-go v2.0.0+incompatible // indirect
-	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
-	golang.org/x/oauth2 v0.0.0-20170928010508-bb50c06baba3
-	google.golang.org/api v0.0.0-20171029000309-672d215daf06
-	google.golang.org/appengine v1.0.0 // indirect
-	google.golang.org/genproto v0.0.0-20171002232614-f676e0f3ac63 // indirect
-	google.golang.org/grpc v1.7.1 // indirect
+	github.com/jstemmer/go-junit-report v0.9.1 // indirect
+	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
+	golang.org/x/tools v0.0.0-20191120001058-ad01d5993d97 // indirect
+	google.golang.org/api v0.14.0
 	upspin.io v0.0.0-20191119235922-d3902620b3d3
 )
