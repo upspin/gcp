@@ -62,8 +62,10 @@ if [[ "$repo" == "upspin.io" ]]; then
 	# Generate the version strings for the Upspin core commands.
 	GOPATH="$EXT_GOPATH" go generate -run make_version ${repo}/version
 else
+	# TODO(adg): restore this functionality
 	# Generate the version strings for the commands in this repo.
-	GOPATH="$EXT_GOPATH" go generate -run make_version ${repo}/vendor/upspin.io/version
+	#GOPATH="$EXT_GOPATH" go generate -run make_version ${repo}/vendor/upspin.io/version
+
 	# Build the upspin tool, used to copy the files to release@upspin.io. (Skip
 	# this if we're operating on the core repo; we'll build it in the next step.)
 	GOPATH="$EXT_GOPATH" go get -d upspin.io/cmd/upspin
