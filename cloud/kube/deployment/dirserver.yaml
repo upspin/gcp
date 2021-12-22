@@ -1,9 +1,14 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: PREFIXdirserver
+  labels:
+    app: dirserver
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+     app: dirserver
   template:
     metadata:
       labels:

@@ -1,9 +1,14 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: PREFIXhostserver
+  labels:
+    app: hostserver
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+     app: hostserver
   template:
     metadata:
       labels:
