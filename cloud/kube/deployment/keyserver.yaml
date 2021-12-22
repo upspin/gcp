@@ -1,9 +1,14 @@
 kind: Deployment
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 metadata:
   name: PREFIXkeyserver
+  labels:
+    app: keyserver
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+     app: keyserver
   template:
     metadata:
       labels:
