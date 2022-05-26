@@ -47,7 +47,7 @@ func (s *server) setupDNSService() error {
 	// First try to read the serviceaccount.json in the Docker image.
 	b, err := ioutil.ReadFile("/upspin/serviceaccount.json")
 	if err == nil {
-		cfg, err := google.JWTConfigFromJSON(b, dns.CloudPlatformScope)
+		cfg, err := google.JWTConfigFromJSON(b, dns.NdevClouddnsReadwriteScope)
 		if err != nil {
 			return err
 		}
@@ -55,7 +55,7 @@ func (s *server) setupDNSService() error {
 	} else if os.IsNotExist(err) {
 		// Otherwise use the default application credentials,
 		// which should work when testing locally.
-		client, err = google.DefaultClient(ctx, dns.CloudPlatformScope)
+		client, err = google.DefaultClient(ctx, dns.NdevClouddnsReadwriteScope)
 		if err != nil {
 			return err
 		}
