@@ -7,6 +7,7 @@ package main
 import (
 	"context"
 	"crypto/sha256"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -20,11 +21,10 @@ import (
 	"upspin.io/upspin"
 )
 
-// TODO(adg): make this configurable?
-const (
-	dnsProject = "upspin-prod"
-	dnsZone    = "upspin-services"
-	dnsDomain  = "upspin.services"
+var (
+	dnsProject = flag.String("dns_project", "upspin-prod", "Google Cloud `project id` for Cloud DNS service")
+	dnsZone    = flag.String("dns_zone", "upspin-services", "Cloud DNS `zone` for which to update records")
+	dnsDomain  = flag.String("dns_domain", "upspin.services", "domain for which to update records")
 )
 
 // userToHost converts an Upspin user name to a fully-qualified domain name
@@ -35,7 +35,7 @@ const (
 func userToHost(name upspin.UserName) string {
 	hash := sha256.New()
 	hash.Write([]byte(name))
-	return fmt.Sprintf("%x."+dnsDomain, hash.Sum(nil)[:16])
+	return fmt.Sprintf("%x."+*dnsDomain, hash.Sum(nil)[:16])
 }
 
 // setupDNSService loads the credentials for accessing the Cloud DNS service
@@ -69,7 +69,7 @@ func (s *server) setupDNSService() error {
 
 // listRecordSets returns the list of record sets for a given host name.
 func (s *server) listRecordSets(host string) ([]*dns.ResourceRecordSet, error) {
-	resp, err := s.dnsSvc.ResourceRecordSets.List(dnsProject, dnsZone).Name(host + ".").Do()
+	resp, err := s.dnsSvc.ResourceRecordSets.List(*dnsProject, *dnsZone).Name(host + ".").Do()
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ func (s *server) updateName(name upspin.UserName, ip string) (host string, err e
 		}},
 		Deletions: rrsets,
 	}
-	change, err = s.dnsSvc.Changes.Create(dnsProject, dnsZone, change).Do()
+	change, err = s.dnsSvc.Changes.Create(*dnsProject, *dnsZone, change).Do()
 	if err != nil && !googleapi.IsNotModified(err) {
 		return "", err
 	}
