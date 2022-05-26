@@ -12,5 +12,5 @@ require (
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/tools v0.0.0-20191120001058-ad01d5993d97 // indirect
 	google.golang.org/api v0.14.0
-	upspin.io v0.0.0-20211222082910-a5a727d009c5
+	upspin.io v0.0.0-20220526012102-c626106d18af
 )
