@@ -2,8 +2,6 @@ module gcp.upspin.io
 
 go 1.20
 
-replace upspin.io => ../upspin
-
 require (
 	cloud.google.com/go/compute/metadata v0.3.0
 	cloud.google.com/go/logging v1.9.0
