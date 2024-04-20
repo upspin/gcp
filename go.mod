@@ -11,7 +11,7 @@ require (
 	golang.org/x/net v0.24.0
 	golang.org/x/oauth2 v0.19.0
 	google.golang.org/api v0.175.0
-	upspin.io v0.0.0-20191120060604-bcd8e61eb68a
+	upspin.io v0.0.0-20240420001626-70e5bc8005f9
 )
 
 require (
